@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smartdraftboard",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
@@ -96,7 +96,7 @@
         "commerce_description": "Free fantasy analysis; no payments, purchases, transactions or betting."
       },
       "publication": {
-        "release_notes": "Adds custom NFL/NBA starter slots for pasted rosters, explicit availability-adjusted scores and full fixtures, expert/ADP scope, incomplete-comparison safeguards, and dated backtests with matched-period baseline checks."
+        "release_notes": "Adds explicit play/no-play probability branches, separate tie probabilities, hypothetical cleared-to-play comparisons and break-even availability. Corrects projection uncertainty units and preserves calibrated spread before display clipping. No claim of improved point-forecast accuracy."
       }
     }
   }

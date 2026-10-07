@@ -68,6 +68,13 @@ roster or screenshot instead of credentials or pretending to access the account.
   and maximum possible scores. Preserve model limitations and approximations.
   A 52% head-to-head edge is a coin flip. Availability and lineup independence
   assumptions do not make a forecast a guarantee.
+- Read `aOutscoresB` as strict wins and `tieProbability` separately. `aWinShare`
+  and lineup `winProbability` count a tie as half; two players on byes have a
+  certain tie, not a 50% chance of outscoring each other.
+- Use `availabilityScenarios` to explain what changes if an injured player is
+  cleared. `breakEvenPlayChance` matches the alternative's expected score; it
+  is not a win probability or updated injury news. Multi-game availability
+  assumes the whole period, so disclose that limitation.
 - Explain expert ranks and ADP only within their returned scope. A season rank
   is not a weekly rank, and ADP is a draft-market measure. Analyst panel size is
   not a count of independent data providers. Agreement is not forecast accuracy.
