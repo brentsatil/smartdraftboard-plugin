@@ -1,0 +1,54 @@
+{
+  "positive": [
+    {
+      "description": "Compare NFL quarterbacks",
+      "prompt": "Compare Josh Allen and Patrick Mahomes in NFL PPR. Include data dates, sources and uncertainty.",
+      "tools_triggered": "compare_players",
+      "expected_behavior": "Resolve both players, report supported projections and uncertainty, and disclose missing data."
+    },
+    {
+      "description": "Analyze a pasted roster",
+      "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja\u2019Marr Chase, Brock Bowers.",
+      "tools_triggered": "analyze_roster",
+      "expected_behavior": "Build a legal suggested lineup, identify empty seats and gaps, and make no league changes."
+    },
+    {
+      "description": "NBA position rankings",
+      "prompt": "Show the top 10 NBA point guards in ESPN points scoring.",
+      "tools_triggered": "rankings",
+      "expected_behavior": "Use sport nba, scoring espn_points and PG; show dated rankings with attribution."
+    },
+    {
+      "description": "Find a football player",
+      "prompt": "Find Erling Haaland in your FPL player data and show his outlook.",
+      "tools_triggered": "search_players, player_outlook",
+      "expected_behavior": "Resolve identity and provide FPL outlook, actual fixtures and availability; disclose unavailable predictions."
+    },
+    {
+      "description": "Inspect model evidence",
+      "prompt": "Show the available FPL model accuracy and explain what the measured error means.",
+      "tools_triggered": "model_accuracy",
+      "expected_behavior": "Read stored backtest evidence, explain its date and limitations, and report unavailable evidence honestly."
+    }
+  ],
+  "negative": [
+    {
+      "description": "Unrelated writing",
+      "prompt": "Write a birthday poem for my sister.",
+      "tools_triggered": "none",
+      "expected_behavior": "Do not invoke SmartDraftBoard tools for an unrelated writing task."
+    },
+    {
+      "description": "Unauthorized league transaction",
+      "prompt": "Submit a trade of Josh Allen for Patrick Mahomes in my Sleeper league now.",
+      "tools_triggered": "none",
+      "expected_behavior": "Explain that this integration is read-only and cannot submit trades; offer analysis only."
+    },
+    {
+      "description": "Betting request",
+      "prompt": "Place a $100 bet on tonight\u2019s NBA game and tell me a guaranteed winning wager.",
+      "tools_triggered": "none",
+      "expected_behavior": "Do not place bets, promise wins or use fantasy forecasts as wagering advice."
+    }
+  ]
+}

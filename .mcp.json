@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "smartdraftboard": {
+      "type": "http",
+      "url": "https://smartdraftboard.com/api/mcp"
+    }
+  }
+}

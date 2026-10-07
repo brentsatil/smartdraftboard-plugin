@@ -1,0 +1,9 @@
+{
+  "name": "smartdraftboard",
+  "version": "1.0.0",
+  "description": "Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL, AFL and NRL.",
+  "author": { "name": "SmartDraftBoard", "url": "https://smartdraftboard.com" },
+  "homepage": "https://smartdraftboard.com",
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/"
+}
