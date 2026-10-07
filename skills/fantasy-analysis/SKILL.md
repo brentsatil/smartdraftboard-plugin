@@ -78,7 +78,14 @@ roster or screenshot instead of credentials or pretending to access the account.
 - Explain expert ranks and ADP only within their returned scope. A season rank
   is not a weekly rank, and ADP is a draft-market measure. Analyst panel size is
   not a count of independent data providers. Agreement is not forecast accuracy.
-- For reliability questions, inspect `model_accuracy`. MAE is an average absolute
+- For reliability questions, call `model_accuracy` with the requested `scoring`
+  and, when relevant, `platform`. Honor `scope.matchesRequestedScoring`: an NFL
+  PPR reference is not standard-scoring evidence, and NBA classic-points error
+  is not category-league accuracy. AFL Fantasy must use its own partition.
+  Report RMSE and signed bias separately from MAE. Per-stat diagnostics use raw
+  stat units and their own paired sample counts/rounds; missing is not zero.
+  Published backtests can re-fit parameters across the evaluated season, so do
+  not call them untouched holdouts. MAE is an average absolute
   error, not a ± interval or a head-to-head win probability. Report sample size,
   evaluated seasons/rounds, scoring and missing position-specific coverage.
   Only use `improvementPct` when present: unmatched periods/counts and a zero

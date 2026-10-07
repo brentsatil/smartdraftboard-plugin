@@ -42,6 +42,24 @@ NFL scoring supports PPR, half PPR and standard. NBA supports points, ESPN point
 SuperCoach; football uses FPL. A public Sleeper league can supply its own supported
 scoring and lineup settings. Ambiguous names require clarification.
 
+## Version 1.3
+
+`model_accuracy` accepts scoring and platform. AFL Fantasy has its own benchmark;
+FPL Classic, Draft and default Fantrax remain scoring aliases. NFL and NBA host
+aliases share PPR and classic-points reference benchmarks, explicitly labelled
+when a requested format lacks a separate evaluation. Custom/category scoring
+cannot be validated by converting aggregate point error.
+
+New backtest runs record per-stat MAE, RMSE, signed bias and paired sample counts,
+including position subsets. Missing forecasts/actuals are excluded, real zeros
+are counted, and RMSE pools squared errors. Old rows without counted diagnostics
+are labelled unavailable. Published seasonal fits are not untouched holdouts.
+
+FPL attacking signals now account for expected minutes and double gameweeks.
+A frozen-default, four-season test measured 0.45% lower MAE over 40,383 forecasts;
+reserved confirmation seasons improved 0.37%. This is a modest FPL-specific
+historical gain, not proof of future or other-sport improvement.
+
 ## Version 1.1
 
 Pasted NFL/NBA rosters can include exact `lineupSlots`, including SUPERFLEX and
