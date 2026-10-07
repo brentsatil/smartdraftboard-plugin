@@ -11,7 +11,7 @@ Use **https://smartdraftboard.com/api/mcp** as a remote MCP server, with no
 authentication. The server uses stateless Streamable HTTP and JSON responses.
 POST is supported; GET and DELETE intentionally return 405.
 
-In Claude, add a custom connector with this URL under Settings → Connectors.
+In Claude, add a custom connector with this URL under Customize → Connectors.
 In ChatGPT, add a custom MCP server from your workspace's available plugin or
 connector settings. Availability depends on the host's plan and administrator
 settings. A custom connection does not imply approval in either public directory.
@@ -41,6 +41,26 @@ NFL scoring supports PPR, half PPR and standard. NBA supports points, ESPN point
 9-category and 8-category values. AFL supports SuperCoach and Fantasy; NRL uses
 SuperCoach; football uses FPL. A public Sleeper league can supply its own supported
 scoring and lineup settings. Ambiguous names require clarification.
+
+## Version 1.1
+
+Pasted NFL/NBA rosters can include exact `lineupSlots`, including SUPERFLEX and
+NBA G/F/UTIL. The result identifies whether seats came from a connected league,
+your input, or a default. Screenshots from ESPN/Yahoo can be transcribed by the
+assistant; private platform URLs are not authenticated integrations.
+
+Comparisons include availability-adjusted expected scores, all fixtures, expert
+rank scope and draft ADP where available. Missing projections prevent an overall
+start/sit winner. Head-to-head probabilities are explicitly uncalibrated model
+approximations, not guarantees.
+
+Backtests expose evaluation periods, sample sizes and computation dates. Baseline
+improvement requires matching periods and counts, and is withheld for zero
+baseline error. MAE, interval coverage and outcome percentiles are defined
+separately. Aggregate matching is not proof of identical players or significance.
+
+The [setup guide](https://smartdraftboard.com/assistant-plugin.html) includes a
+local question builder and an optional live player comparison.
 
 ## Limitations and data
 

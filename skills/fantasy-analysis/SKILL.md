@@ -37,9 +37,22 @@ For a screenshot, read the visible names and use `search_players` to resolve
 unclear text. Report ambiguous or unmatched names and ask for the team or a
 correction. Never silently omit players or replace them with plausible names.
 Supply each player once. Pass the full roster when measuring trade lineup impact.
+For pasted NFL/NBA rosters (including ESPN or Yahoo screenshots), read the starting
+slots and pass `lineupSlots`, repeating each seat: QB, RB, RB, WR, WR, TE, FLEX,
+SUPERFLEX, for example. Exclude bench, IR and taxi seats. If slots are missing,
+ask when they change the answer, or clearly identify the default formation from
+`lineupRules`. A public Sleeper league's actual seats remain authoritative.
+Private ESPN/Yahoo URLs are not an authenticated integration: ask for a pasted
+roster or screenshot instead of credentials or pretending to access the account.
 
 ## Read the answer correctly
 
+- If `decision.status` is incomplete, do not announce an overall winner. Explain
+  which projection is absent; compare only the supported facts.
+- Separate `thisPeriod.points` (model projection) from `expectedPoints` (adjusted
+  for modeled availability). An injury probability is a model convention, not a
+  medical certainty. Read all `fixtures`, especially NBA multi-game weeks and
+  FPL doubles; the compact opponent label is only the first fixture.
 - Lead with the decision and the numerical reason. Quote `asOf` as the underlying
   data date. If null, say the data's timestamp is unavailable; do not use today's
   date as a substitute. Mixed-sport search rows carry their own timestamps.
@@ -55,6 +68,15 @@ Supply each player once. Pass the full roster when measuring trade lineup impact
   and maximum possible scores. Preserve model limitations and approximations.
   A 52% head-to-head edge is a coin flip. Availability and lineup independence
   assumptions do not make a forecast a guarantee.
+- Explain expert ranks and ADP only within their returned scope. A season rank
+  is not a weekly rank, and ADP is a draft-market measure. Analyst panel size is
+  not a count of independent data providers. Agreement is not forecast accuracy.
+- For reliability questions, inspect `model_accuracy`. MAE is an average absolute
+  error, not a ± interval or a head-to-head win probability. Report sample size,
+  evaluated seasons/rounds, scoring and missing position-specific coverage.
+  Only use `improvementPct` when present: unmatched periods/counts and a zero
+  baseline error prevent a valid percentage. Matched aggregate counts still do
+  not establish identical player cohorts or statistical significance.
 - Credit SmartDraftBoard and the returned `sources`. Link original news URLs and
   useful `links` from the answer. Do not reproduce full articles or expose named
   ESPN analysts from an anonymised consensus.
