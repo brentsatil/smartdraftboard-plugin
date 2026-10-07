@@ -1,6 +1,6 @@
 ---
 name: fantasy-analysis
-description: Analyze fantasy rosters, compare players, evaluate trades and read projections, injury reports or news with SmartDraftBoard for NFL, NBA, Premier League FPL, AFL and NRL. Use for a pasted roster, a roster screenshot or a user-supplied public Sleeper league. Excludes betting, account changes and placing roster transactions.
+description: Analyze fantasy rosters, compare players, evaluate trades and read projections, injury reports or news with SmartDraftBoard for NFL, NBA, Premier League FPL or Fantrax, AFL and NRL. Use for a pasted roster, a roster screenshot or a user-supplied public Sleeper league. Excludes betting, account changes and placing roster transactions.
 ---
 
 # SmartDraftBoard fantasy analysis
@@ -25,7 +25,7 @@ advice; they cannot set a lineup, execute a trade, claim a player or save a leag
 | Recent headlines and original links | `latest_news` |
 | How well has the model predicted scores? | `model_accuracy` |
 
-Establish sport and scoring from the conversation. Use `football` for FPL.
+Establish sport and scoring from the conversation. Use `football` for Premier League FPL or Fantrax.
 Ask only for missing details that change the decision. If using a default scoring
 system, name it; a connected Sleeper league supplies its own rules and seats.
 Do not infer a league from the user's identity or browse other people's leagues.
@@ -44,6 +44,36 @@ ask when they change the answer, or clearly identify the default formation from
 `lineupRules`. A public Sleeper league's actual seats remain authoritative.
 Private ESPN/Yahoo URLs are not an authenticated integration: ask for a pasted
 roster or screenshot instead of credentials or pretending to access the account.
+
+## Fantrax EPL and NBA
+
+Use `platform: "fantrax"` and pass the league's complete non-secret scoring in
+`fantrax`: `scoringType` and `categories` with normalized `id`, `points`, and
+optional `positionOverrides`. For NBA categories, use `H2H_CATEGORIES` or `ROTO`
+and include each counted category with zero points. The tools sum that league's
+category set; they do not default it to nine categories. Do not combine Fantrax
+rules with a Sleeper league. Other Fantrax sports are not supported yet.
+
+For EPL, request the user's scoring settings rather than assuming FPL points or
+a universal Fantrax default. For example, goals=10 and assists=6 is supplied as
+`categories: [{id:"goals",points:10},{id:"assists",points:6}]` only if those are
+ALL scored categories. Include ghost stats even when they are not modelled:
+the result must disclose the gap, not silently drop them. Football GAMM's
+`starts` is an FPL appearance-points proxy and cannot score Fantrax starts.
+
+For EPL lineup analysis, also supply exact `lineupSlots` and
+`fantrax.playerPositions` keyed by player name, using GKP/DEF/MID/FWD. Without
+these, FPL-source positions are only a labelled fallback for player lookups.
+Fantrax receives no FPL captain multiplier, prices or ownership. Football
+season forecasts/trade totals and custom Fantrax outcome ranges are unavailable;
+never replace them with FPL numbers or invent a win probability. NBA uses the
+existing GAMM/season stat line, with the returned basis identifying the model.
+
+Read `profile.fantraxMissingStats` and `unavailable`. Supported stat contributions
+are shown before score-level adjustments; they are not a complete projection
+when a required category is missing. `model_accuracy` accepts the same settings
+but reports labelled reference backtests, not validation of custom Fantrax
+scoring. Private Fantrax account access is not provided: never request a secret ID.
 
 ## Read the answer correctly
 

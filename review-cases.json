@@ -29,6 +29,18 @@
       "prompt": "Show the available FPL model accuracy and explain what the measured error means.",
       "tools_triggered": "model_accuracy",
       "expected_behavior": "Read stored backtest evidence, explain its date and limitations, and report unavailable evidence honestly."
+    },
+    {
+      "description": "Fantrax NBA custom categories",
+      "prompt": "Rank NBA players for my Fantrax category league counting only points, rebounds and assists.",
+      "tools_triggered": "rankings",
+      "expected_behavior": "Use platform fantrax and the supplied category set; label z-sum values and withhold uncalibrated ranges."
+    },
+    {
+      "description": "Fantrax EPL missing ghost stats",
+      "prompt": "Compare Erling Haaland and Bukayo Saka in my Fantrax EPL league: goals 10, assists 6 and key passes 1.",
+      "tools_triggered": "compare_players",
+      "expected_behavior": "Pass every scoring category. If key passes are unprojected, withhold a full forecast/winner and explain the missing stat; never substitute FPL points."
     }
   ],
   "negative": [

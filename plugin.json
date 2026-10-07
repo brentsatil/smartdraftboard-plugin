@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smartdraftboard",
-  "version": "1.3.0",
-  "description": "Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL, AFL and NRL.",
+  "version": "1.4.0",
+  "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
     "url": "https://smartdraftboard.com"
@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "SmartDraftBoard",
         "shortDescription": "Your fantasy roster, explained",
-        "longDescription": "Analyze fantasy sports data for NFL, NBA, FPL, AFL and NRL. Compare players, evaluate trades and analyze pasted rosters or public Sleeper leagues with scoring-specific projections, legal lineup suggestions, full fixtures, attributed news and available model backtests. Results include data dates, source credits, uncertainty and missing-data warnings. Eleven read-only tools support fantasy decisions without a SmartDraftBoard account. They cannot change a lineup, submit a trade, access private leagues, or place bets.",
+        "longDescription": "Analyze fantasy sports data for NFL, NBA, FPL, AFL and NRL. Compare players, evaluate trades and analyze pasted rosters or public Sleeper leagues with scoring-specific projections, legal lineup suggestions, full fixtures, attributed news and available model backtests. Results include data dates, source credits, uncertainty and missing-data warnings. Eleven read-only tools support fantasy decisions without a SmartDraftBoard account. They cannot change a lineup, submit a trade, access private leagues, or place bets. Fantrax EPL/NBA analysis accepts pasted non-secret league scoring; missing modelled stats are disclosed.",
         "developerName": "SmartDraftBoard",
         "capabilities": [
           "Read"
@@ -68,6 +68,18 @@
               "prompt": "Show the available FPL model accuracy and explain what the measured error means.",
               "tools_triggered": "model_accuracy",
               "expected_behavior": "Read stored backtest evidence, explain its date and limitations, and report unavailable evidence honestly."
+            },
+            {
+              "description": "Fantrax NBA custom categories",
+              "prompt": "Rank NBA players for my Fantrax category league counting only points, rebounds and assists.",
+              "tools_triggered": "rankings",
+              "expected_behavior": "Use platform fantrax and the supplied category set; label z-sum values and withhold uncalibrated ranges."
+            },
+            {
+              "description": "Fantrax EPL missing ghost stats",
+              "prompt": "Compare Erling Haaland and Bukayo Saka in my Fantrax EPL league: goals 10, assists 6 and key passes 1.",
+              "tools_triggered": "compare_players",
+              "expected_behavior": "Pass every scoring category. If key passes are unprojected, withhold a full forecast/winner and explain the missing stat; never substitute FPL points."
             }
           ],
           "negative": [
@@ -96,7 +108,7 @@
         "commerce_description": "Free fantasy analysis; no payments, purchases, transactions or betting."
       },
       "publication": {
-        "release_notes": "Adds platform-specific accuracy evidence, per-stat error/sample counts, RMSE and signed bias. FPL GAMM now adjusts attacking signals for expected minutes; four-season frozen-default evaluation reduced MAE 0.45% (0.37% on reserved confirmation seasons). Other sports receive clearer diagnostics; no unmeasured accuracy gain is claimed."
+        "release_notes": "Adds Fantrax EPL and NBA league scoring to seven MCP tools. EPL GAMM is re-priced from predicted stats with position overrides; NBA supports custom points and category sets. Missing stats withhold incomplete totals. Fantrax EPL lineups use supplied seats/eligibility and no FPL captain multiplier. Custom Fantrax intervals and accuracy are not claimed."
       }
     }
   }

@@ -39,8 +39,22 @@ The tools are `analyze_roster`, `compare_players`, `player_outlook`, `rankings`,
 
 NFL scoring supports PPR, half PPR and standard. NBA supports points, ESPN points,
 9-category and 8-category values. AFL supports SuperCoach and Fantasy; NRL uses
-SuperCoach; football uses FPL. A public Sleeper league can supply its own supported
+SuperCoach; football supports FPL and supplied Fantrax EPL points rules. A public Sleeper league can supply its own supported
 scoring and lineup settings. Ambiguous names require clarification.
+
+## Version 1.4
+
+Fantrax EPL and NBA settings are supported by comparisons, outlooks, rankings,
+roster/trade analysis, weekly decisions and accuracy queries. Supply `platform:
+"fantrax"` and complete `fantrax` scoring settings. NBA supports custom points
+and category sets; EPL re-prices the GAMM stat line, with position-specific
+weights and predicted minutes. Missing ghost stats withhold the full total.
+
+EPL lineup analysis requires exact starter slots and player eligibility. It
+uses no FPL captain multiplier. EPL season/trade projections and custom-scoring
+uncertainty are not available; reference backtests do not validate league scoring.
+The app's football Fantrax GAMM column and drawer use the same scorer. No
+private Fantrax account access or MLB/NHL/NFL Fantrax integration is claimed.
 
 ## Version 1.3
 
@@ -98,7 +112,7 @@ the task. Your assistant provider receives tool results under its own policies.
 
 ## Review and packaging
 
-`review-cases.json` contains five positive and three negative review scenarios.
+`review-cases.json` contains seven positive and three negative review scenarios.
 No demo account or password is required. Use an owner-controlled public sample
 league for Sleeper testing, or pasted names without any league connection.
 

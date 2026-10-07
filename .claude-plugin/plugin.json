@@ -1,7 +1,7 @@
 {
   "name": "smartdraftboard",
-  "version": "1.3.0",
-  "description": "Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL, AFL and NRL.",
+  "version": "1.4.0",
+  "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
     "url": "https://smartdraftboard.com"
