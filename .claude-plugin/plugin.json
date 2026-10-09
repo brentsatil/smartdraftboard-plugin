@@ -11,7 +11,7 @@
   "skills": "./skills/",
   "displayName": "SmartDraftBoard",
   "repository": "https://github.com/brentsatil/smartdraftboard-plugin",
-  "documentationUrl": "https://smartdraftboard.com/assistant-plugin.html",
+  "documentationUrl": "https://smartdraftboard.com/assistant-plugin",
   "privacyPolicyUrl": "https://smartdraftboard.com/privacy-policy.html",
   "supportUrl": "https://smartdraftboard.com/contact",
   "termsOfServiceUrl": "https://smartdraftboard.com/terms",

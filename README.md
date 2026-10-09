@@ -131,8 +131,9 @@ The MIT license applies to plugin files, not third-party data or the hosted serv
 The server keeps `ASSISTANT_PRO_ENABLED` off by default. When disabled it lists
 only the eleven public tools. After authorized deployment and client checks,
 `get_assistant_profile` works for active linked Free accounts;
-`list_my_leagues`, `my_weekly_briefing` and `evaluate_my_trade` require current
-Pro membership and an explicitly selected owned saved league. Upgrading after
+`list_my_leagues` requires current Pro membership and lists owned saved leagues
+so the user can select one. `my_weekly_briefing` and `evaluate_my_trade` require
+current Pro membership and an explicitly selected owned saved league. Upgrading after
 linking does not require a new grant; each call checks current membership.
 Expired or inactive membership, revoked/expired credentials, wrong ownership
 and incomplete evidence do not unlock recommendations.
