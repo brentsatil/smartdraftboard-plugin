@@ -115,7 +115,8 @@ the task. Your assistant provider receives tool results under its own policies.
 
 ## Review and packaging
 
-Version 1.5.1 limits the OpenAI manifest to the required five positive and three
+Version 1.5.2 describes available functionality in the directory listing without
+subscription wording. Version 1.5.1 limits the OpenAI manifest to the required five positive and three
 negative review cases. `review-cases.json` retains the broader public regression
 cases, including Fantrax coverage, and staged linked-access cases. The linked
 walkthrough demonstrates the public integration in Claude, not OpenAI client
