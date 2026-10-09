@@ -4,7 +4,8 @@ Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
 AFL and NRL. This package provides one shared skill and eleven read-only tools
 for compatible MCP clients. The eleven public tools need no SmartDraftBoard
 account or API key. Version 1.5 prepares optional account access; the protected
-rollout remains disabled pending deployment and actual client verification.
+rollout remains disabled pending actual account/client verification. The v1.5
+service and clean setup URL are deployed; directory approval is separate.
 
 ## Connect
 
@@ -114,7 +115,11 @@ the task. Your assistant provider receives tool results under its own policies.
 
 ## Review and packaging
 
-`review-cases.json` contains public cases and staged linked-access cases.
+Version 1.5.1 limits the OpenAI manifest to the required five positive and three
+negative review cases. `review-cases.json` retains the broader public regression
+cases, including Fantrax coverage, and staged linked-access cases. The linked
+walkthrough demonstrates the public integration in Claude, not OpenAI client
+certification.
 Public cases need no demo account. Protected cases require owner-controlled
 synthetic Free/Pro accounts after authorized deployment. Use a public sample
 league for Sleeper testing, or pasted names without any league connection.

@@ -1,6 +1,6 @@
 {
   "name": "smartdraftboard",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Read-only fantasy analysis; optional linked saved leagues are staged behind a disabled rollout pending client checks.",
   "author": {
     "name": "SmartDraftBoard",
