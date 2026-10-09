@@ -1,7 +1,7 @@
 {
   "name": "smartdraftboard",
-  "version": "1.4.0",
-  "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
+  "version": "1.5.0",
+  "description": "Read-only fantasy analysis; optional linked saved leagues are staged behind a disabled rollout pending client checks.",
   "author": {
     "name": "SmartDraftBoard",
     "url": "https://smartdraftboard.com"
@@ -11,7 +11,7 @@
   "skills": "./skills/",
   "displayName": "SmartDraftBoard",
   "repository": "https://github.com/brentsatil/smartdraftboard-plugin",
-  "documentationUrl": "https://smartdraftboard.com/assistant-plugin.html",
+  "documentationUrl": "https://smartdraftboard.com/assistant-plugin",
   "privacyPolicyUrl": "https://smartdraftboard.com/privacy-policy.html",
   "supportUrl": "https://smartdraftboard.com/contact",
   "termsOfServiceUrl": "https://smartdraftboard.com/terms",

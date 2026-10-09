@@ -29,7 +29,7 @@ Establish sport and scoring from the conversation. Use `football` for Premier Le
 Ask only for missing details that change the decision. If using a default scoring
 system, name it; a connected Sleeper league supplies its own rules and seats.
 Do not infer a league from the user's identity or browse other people's leagues.
-Use only the public username or league the user provides for this analysis.
+For public tools, use only the public username or league the user provides for this analysis.
 A league ID without a username may need the username to identify their team.
 If several leagues are returned, ask the user to choose.
 
@@ -42,8 +42,8 @@ slots and pass `lineupSlots`, repeating each seat: QB, RB, RB, WR, WR, TE, FLEX,
 SUPERFLEX, for example. Exclude bench, IR and taxi seats. If slots are missing,
 ask when they change the answer, or clearly identify the default formation from
 `lineupRules`. A public Sleeper league's actual seats remain authoritative.
-Private ESPN/Yahoo URLs are not an authenticated integration: ask for a pasted
-roster or screenshot instead of credentials or pretending to access the account.
+A private ESPN/Yahoo URL alone does not authenticate account access. Use the
+linked tools below when advertised; otherwise request a pasted roster or screenshot.
 
 ## Fantrax EPL and NBA
 
@@ -73,7 +73,7 @@ Read `profile.fantraxMissingStats` and `unavailable`. Supported stat contributio
 are shown before score-level adjustments; they are not a complete projection
 when a required category is missing. `model_accuracy` accepts the same settings
 but reports labelled reference backtests, not validation of custom Fantrax
-scoring. Private Fantrax account access is not provided: never request a secret ID.
+scoring. Fantrax provider authentication is not performed through chat: never request a secret ID.
 
 ## Read the answer correctly
 
@@ -134,3 +134,37 @@ stakes or pick'em betting recommendations from these tools. Never ask for fantas
 platform passwords, cookies, API keys or private account credentials. If the
 connector is unavailable, explain that live SmartDraftBoard analysis requires its
 connection; do not fabricate a tool result.
+
+## Optional linked tools: use only when actually advertised
+
+The protected rollout is staged and off by default. Do not invent an available
+account integration from package instructions. Anonymous tools remain free.
+When the server advertises them, `get_assistant_profile` supports active linked
+Free users; `list_my_leagues`, `my_weekly_briefing({leagueId})` and
+`evaluate_my_trade({leagueId,give,get})` require current Pro. Use the client's
+browser OAuth flow; never collect OAuth tokens, codes or provider secrets in chat.
+On a login challenge, let the client handle authorization; on PRO_REQUIRED,
+explain current membership and the returned safe continuation. A login or upgrade
+click is not a successful tool result. Membership is rechecked on every call.
+
+Call `list_my_leagues` and ask the user to select explicitly when several leagues
+exist. Do not supply userId, tier, team ownership or scoring overrides to protected
+tools. They read the linked account's saved evidence, never sync or submit changes.
+Existing saved leagues may need refreshing on the website. Verified NBA
+ESPN/Sleeper captures currently support saved calculations; other combinations
+may remain partial/unavailable. Preserve all capability reasons and source gaps.
+
+A saved trade `comparison.basis: "value comparison"` supports only named package
+values in its returned unit/horizon. Incoming platform eligibility is unverified;
+legal lineups, opponent fit, overall verdict and rest-of-season totals remain
+unavailable. Never turn a positive value delta into an overall trade recommendation.
+Website signout clears website state but does not revoke OAuth; disconnect from
+Profile → Settings → Assistant connections. Actual Claude/ChatGPT/Codex OAuth
+compatibility and refresh behavior still require deployed client verification.
+
+Read `context` when present: season and publicationSeason can differ; preserve
+`periodLabel`, decisionPeriod and providerMatchupPeriod independently. Original
+sourceDates may be null; generatedAt, savedAt and provider write times cannot
+replace missing original captures. `completeness.scope: "sources"` preserves
+existing public calculations with evidence warnings, while `scope: "decision"`
+withholds dependent decisions. These labels do not establish prediction lift.
