@@ -2,13 +2,14 @@
 
 Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
 AFL and NRL. This package provides one shared skill and eleven read-only tools
-for Claude and OpenAI-compatible plugin clients. No SmartDraftBoard account,
-API key or OAuth is required.
+for compatible MCP clients. The eleven public tools need no SmartDraftBoard
+account or API key. Version 1.5 prepares optional account access; the protected
+rollout remains disabled pending deployment and actual client verification.
 
 ## Connect
 
-Use **https://smartdraftboard.com/api/mcp** as a remote MCP server, with no
-authentication. The server uses stateless Streamable HTTP and JSON responses.
+Use **https://smartdraftboard.com/api/mcp** as a remote MCP server. Public tools
+work anonymously. The server uses stateless Streamable HTTP and JSON responses.
 POST is supported; GET and DELETE intentionally return 405.
 
 In Claude, add a custom connector with this URL under Customize → Connectors.
@@ -91,7 +92,7 @@ improvement requires matching periods and counts, and is withheld for zero
 baseline error. MAE, interval coverage and outcome percentiles are defined
 separately. Aggregate matching is not proof of identical players or significance.
 
-The [setup guide](https://smartdraftboard.com/assistant-plugin.html) includes a
+The [setup guide](https://smartdraftboard.com/assistant-plugin) includes a
 local question builder and an optional live player comparison.
 
 ## Limitations and data
@@ -100,20 +101,22 @@ Projections are estimates, not guarantees. Answers label data dates, source
 credits, assumptions and unavailable information. Seasonal and weekly estimates
 are distinct; an unavailable injury return date can prevent a confident trade
 verdict. Incomplete matchup inputs do not produce a win probability. These tools
-cannot alter lineups, submit trades, access private leagues, export bulk datasets,
-or place bets. OAuth and interactive MCP cards are not part of this release.
+cannot alter lineups, submit trades, export bulk datasets or place bets.
+Interactive MCP cards are not provided. Optional linked access is described below;
+its availability follows the server rollout, not the package version.
 
 Only send player names, scoring settings and public league references needed for
 the task. Your assistant provider receives tool results under its own policies.
 [Privacy](https://smartdraftboard.com/privacy-policy) ·
 [Terms](https://smartdraftboard.com/terms) ·
 [Support](https://smartdraftboard.com/contact) ·
-[Setup guide](https://smartdraftboard.com/assistant-plugin.html)
+[Setup guide](https://smartdraftboard.com/assistant-plugin)
 
 ## Review and packaging
 
-`review-cases.json` contains seven positive and three negative review scenarios.
-No demo account or password is required. Use an owner-controlled public sample
+`review-cases.json` contains public cases and staged linked-access cases.
+Public cases need no demo account. Protected cases require owner-controlled
+synthetic Free/Pro accounts after authorized deployment. Use a public sample
 league for Sleeper testing, or pasted names without any league connection.
 
 Zip the contents of this directory, including hidden files, with `plugin.json`
@@ -122,3 +125,55 @@ customer data. Each public directory has a separate review process; this package
 alone does not publish a listing.
 
 The MIT license applies to plugin files, not third-party data or the hosted service.
+
+## Staged optional account access (1.5)
+
+The server keeps `ASSISTANT_PRO_ENABLED` off by default. When disabled it lists
+only the eleven public tools. After authorized deployment and client checks,
+`get_assistant_profile` works for active linked Free accounts;
+`list_my_leagues`, `my_weekly_briefing` and `evaluate_my_trade` require current
+Pro membership and an explicitly selected owned saved league. Upgrading after
+linking does not require a new grant; each call checks current membership.
+Expired or inactive membership, revoked/expired credentials, wrong ownership
+and incomplete evidence do not unlock recommendations.
+
+Link through the assistant client's browser authorization flow on SmartDraftBoard,
+review the client origin and read-only scopes, then approve explicitly. Cancel
+issues no grant. Revoke from Profile → Settings → Assistant connections; logging
+out of the website clears website private state but does not revoke an assistant
+grant. Revoke explicitly when disconnecting an assistant. Never paste provider
+passwords, cookies, API keys, OAuth codes or tokens into chat.
+
+Scopes are only `assistant:profile:read` and `assistant:leagues:read`. Public
+clients use PKCE S256 and token endpoint authentication `none`. Resource audience
+is `https://smartdraftboard.com/api/mcp`; operational routes are under
+`/api/assistant/oauth/`. Codes last five minutes and are single use; access lasts
+fifteen minutes. Refresh rotates, with thirty days inactivity and ninety days
+absolute expiry. Refresh downscoping is unsupported: omit scope or repeat the
+exact grant set. A smaller set is rejected without consuming the refresh token.
+
+Saved recommendation support currently depends on verified NBA ESPN/Sleeper
+roster, eligibility, rules, model and feed captures. Older saved leagues may need
+refreshing on the website before recommendations are available. A DB write date
+is not original source freshness. Other sport/provider combinations may provide
+selection or partial saved facts; this package does not promise universal saved
+recommendation support. Saved trade results can compare verified named package
+values in the returned period/currency. Incoming platform eligibility remains
+unverified: legal lineup impact, overall trade verdict and rest-of-season totals
+are unavailable. A value comparison is not a full trade recommendation.
+
+## Privacy and client verification
+
+The assistant provider receives the selected tool inputs and returned account or
+saved-league facts under its own policies. SmartDraftBoard records coarse events
+and authorized grant use; it does not put tokens, provider credentials or roster
+payloads into analytics. Only meaningful protected successes count as Pro use;
+login, upgrade clicks, denials and all-unavailable answers do not.
+
+Claude, ChatGPT and Codex are intended clients, subject to each host's plan,
+workspace policy and MCP/OAuth support. Local HTTP/browser fixtures are verified;
+this release package does **not** certify actual client sign-in, refresh, reconnect
+or directory acceptance. Owner-controlled deployed client checks remain pending.
+Package installation, draft PRs and local builds are not deployment or publication.
+See [privacy](https://smartdraftboard.com/privacy-policy),
+[support](https://smartdraftboard.com/contact) and the setup guide for help.

@@ -62,5 +62,28 @@
       "tools_triggered": "none",
       "expected_behavior": "Do not place bets, promise wins or use fantasy forecasts as wagering advice."
     }
-  ]
+  ],
+  "staged_protected": [
+    {
+      "description": "Linked Free profile and Pro denial",
+      "tools_triggered": "get_assistant_profile, list_my_leagues",
+      "expected_behavior": "With enabled rollout and owner-controlled Free account, profile works; league call returns PRO_REQUIRED, no private data or success activation."
+    },
+    {
+      "description": "Upgrade after linking",
+      "tools_triggered": "list_my_leagues",
+      "expected_behavior": "Same grant observes current Pro; owned saved selection and honest partial capability reasons. No other owner data."
+    },
+    {
+      "description": "Saved NBA trade values only",
+      "tools_triggered": "evaluate_my_trade",
+      "expected_behavior": "Verified named package values retain unit/horizon; incoming eligibility, legal lineups and overall verdict remain unavailable. No full verdict inferred."
+    },
+    {
+      "description": "Expired revoked inactive wrong-owner and disabled",
+      "tools_triggered": "get_assistant_profile, list_my_leagues, my_weekly_briefing, evaluate_my_trade",
+      "expected_behavior": "Fail closed; no activation or leaked private payload. Disabled server advertises eleven public tools only; those remain usable."
+    }
+  ],
+  "verification_status": "Staged protected cases need authorized deployed owner-controlled accounts and real intended clients; local synthetic coverage is not client certification."
 }
