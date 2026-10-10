@@ -169,7 +169,11 @@ linked Free and Pro accounts. `my_weekly_briefing({leagueId})`,
 `evaluate_my_trade({leagueId,give,get})` and `plan_nba_streams` require current Pro. Use the client's
 browser OAuth flow; never collect OAuth tokens, codes or provider secrets in chat.
 On a login challenge, let the client handle authorization; on PRO_REQUIRED,
-explain current membership and the returned safe continuation. A login or upgrade
+explain current membership and the returned safe continuation. A response with
+`status: "blocked"`, `access.allowed: false`, `error_code: "PRO_REQUIRED"` and
+`data: null` is a membership denial even though the check has `isError: false`.
+Do not retry with changed player inputs or invent an advanced recommendation.
+A login or upgrade
 click is not a successful tool result. Membership is rechecked on every call.
 
 Call `list_my_leagues` and ask the user to select explicitly when several leagues

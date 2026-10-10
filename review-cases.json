@@ -67,7 +67,7 @@
     {
       "description": "Free facts and Pro decisions",
       "tools_triggered": "get_assistant_profile, list_my_leagues, read_my_league, plan_nba_streams",
-      "expected_behavior": "With enabled rollout, an active linked Free account can read its profile and owned saved leagues. NBA streaming, weekly recommendations and trade decisions refuse with PRO_REQUIRED before reading model inputs; no Pro success activation is recorded for Free facts."
+      "expected_behavior": "With enabled rollout, an active linked Free account can read its profile and owned saved leagues. NBA streaming, weekly recommendations and trade decisions return status=blocked, access.allowed=false, error_code=PRO_REQUIRED and data=null with isError=false before reading model inputs; ChatGPT must preserve PRO_REQUIRED rather than report INVALID_ARGUMENT; no Pro success activation is recorded for Free facts."
     },
     {
       "description": "Upgrade after linking",

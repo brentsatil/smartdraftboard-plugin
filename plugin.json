@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smartdraftboard",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
@@ -96,7 +96,7 @@
         "commerce_description": "Public analysis and enabled authenticated saved-league fact reads are free. Advanced NBA streaming and saved weekly/trade decisions require current Pro membership managed on the website; MCP does not process payments or purchases."
       },
       "publication": {
-        "release_notes": "1.6.1 enables account linking with mixed public/OAuth access. The eleven anonymous tools stay free; active linked Free accounts can read their profile and owned saved-league facts. Advanced NBA streaming, saved weekly and saved trade decisions require current Pro. MCP reads saved captures and does not refresh providers or make league changes. Client availability and directory review remain separate from server deployment."
+        "release_notes": "1.6.2 preserves Free linked profile and owned saved-league reads, and reports advanced decision membership denials as explicit blocked outcomes with PRO_REQUIRED, access.allowed=false and no decision data. This avoids ChatGPT converting membership denials to INVALID_ARGUMENT. All three advanced tools still check current Pro membership before reading or calculating decision inputs."
       }
     }
   }
