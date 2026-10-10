@@ -211,3 +211,18 @@ or directory acceptance. Owner-controlled deployed client checks remain pending.
 Package installation, draft PRs and local builds are not deployment or publication.
 See [privacy](https://smartdraftboard.com/privacy-policy),
 [support](https://smartdraftboard.com/contact) and the setup guide for help.
+
+
+### Free NBA connections
+
+On the website, an active Free account can connect supported NBA leagues, import
+or re-import their settings and refresh league facts. NBA connections continue
+after Pro expiry. ESPN, Sleeper and Fantrax use their existing supported flows;
+Yahoo remains subject to OAuth/companion availability, with manual import as the
+fallback. Provider credentials belong only in the website's secure connection flow.
+Advanced saved-league decisions and `plan_nba_streams` still require Pro. Existing
+public research access is unchanged. The MCP reads saved captures; it does not
+refresh a provider account. When source data is stale, direct the user to refresh
+on the NBA board and read again. Do not describe a saved timestamp as a live fetch.
+These changes are prepared for deployment; package installation does not activate
+them or enable the staged account MCP tools.
