@@ -21,6 +21,7 @@ advice; they cannot set a lineup, execute a trade, claim a player or save a leag
 | Is this trade useful for my roster? | `evaluate_trade` |
 | Which of my Sleeper leagues should I use? | `find_sleeper_leagues` |
 | Captain or streaming choices across the player pool | `weekly_decisions` |
+| Compare one NBA pickup by usable daily starts and net points | `plan_nba_streams` (when advertised) |
 | Current availability designations | `injury_report` |
 | Recent headlines and original links | `latest_news` |
 | How well has the model predicted scores? | `model_accuracy` |
@@ -44,6 +45,29 @@ ask when they change the answer, or clearly identify the default formation from
 `lineupRules`. A public Sleeper league's actual seats remain authoritative.
 A private ESPN/Yahoo URL alone does not authenticate account access. Use the
 linked tools below when advertised; otherwise request a pasted roster or screenshot.
+
+## NBA daily streaming plans
+
+When `plan_nba_streams` is advertised and the user has linked Pro access, use it for one add/drop versus holding in
+an NBA daily-lineup points league. Establish the exact scoring preset, daily
+starter slots, full active/bench roster, league eligibility for every player,
+available candidates and allowed drops (or a confirmed open roster spot).
+Ask only for those facts missing from the conversation. Do not substitute
+league-average ownership for actual free-agent availability or guess eligibility.
+
+Supply `lineupMode: "daily"` only when the league uses daily lineups without games
+caps. The planner supports classic `points` and default `espn_points`, future
+Eastern dates, and the loaded SDB NBA week. It does not support categories, custom
+points, weekly locks, Sleeper Lock-In/Game Pick, same-day lineup locks or multi-move
+sequences. For those requests explain the limit and use supported comparison
+or ranking tools without pretending to optimize the requested format.
+
+Lead with the returned conditional add/drop or hold. Compare `gain` against the
+optimized no-move baseline, and explain `usableGames`, `blockedGames` and lost
+drop starts; weekly game count alone is not usable value. Show the daily lineup
+when helpful. Preserve source gaps and the hypothetical waiver clearance/start
+date: the tool does not verify league availability or execute moves. If `status`
+is `incomplete`, give no winner. Rest-of-season drop cost is not included.
 
 ## Fantrax EPL and NBA
 
@@ -140,16 +164,19 @@ connection; do not fabricate a tool result.
 The protected rollout is staged and off by default. Do not invent an available
 account integration from package instructions. Anonymous tools remain free.
 When the server advertises them, `get_assistant_profile` supports active linked
-Free users; `list_my_leagues`, `my_weekly_briefing({leagueId})` and
-`evaluate_my_trade({leagueId,give,get})` require current Pro. Use the client's
+Free users; `list_my_leagues` and `read_my_league({leagueId})` provide saved facts to active
+linked Free and Pro accounts. `my_weekly_briefing({leagueId})`,
+`evaluate_my_trade({leagueId,give,get})` and `plan_nba_streams` require current Pro. Use the client's
 browser OAuth flow; never collect OAuth tokens, codes or provider secrets in chat.
 On a login challenge, let the client handle authorization; on PRO_REQUIRED,
 explain current membership and the returned safe continuation. A login or upgrade
 click is not a successful tool result. Membership is rechecked on every call.
 
 Call `list_my_leagues` and ask the user to select explicitly when several leagues
-exist. Do not supply userId, tier, team ownership or scoring overrides to protected
-tools. They read the linked account's saved evidence, never sync or submit changes.
+exist. Do not supply userId, tier, team ownership or scoring overrides to saved-league
+tools. Saved-league tools read the linked account's evidence and never sync or submit
+changes. `plan_nba_streams` instead uses the supplied roster/rules with the public
+NBA pool; it does not read or verify a saved league.
 Existing saved leagues may need refreshing on the website. Verified NBA
 ESPN/Sleeper captures currently support saved calculations; other combinations
 may remain partial/unavailable. Preserve all capability reasons and source gaps.
@@ -168,3 +195,18 @@ sourceDates may be null; generatedAt, savedAt and provider write times cannot
 replace missing original captures. `completeness.scope: "sources"` preserves
 existing public calculations with evidence warnings, while `scope: "decision"`
 withholds dependent decisions. These labels do not establish prediction lift.
+
+
+### Free NBA connections
+
+On the website, an active Free account can connect supported NBA leagues, import
+or re-import their settings and refresh league facts. NBA connections continue
+after Pro expiry. ESPN, Sleeper and Fantrax use their existing supported flows;
+Yahoo remains subject to OAuth/companion availability, with manual import as the
+fallback. Provider credentials belong only in the website's secure connection flow.
+Advanced saved-league decisions and `plan_nba_streams` still require Pro. Existing
+public research access is unchanged. The MCP reads saved captures; it does not
+refresh a provider account. When source data is stale, direct the user to refresh
+on the NBA board and read again. Do not describe a saved timestamp as a live fetch.
+These changes are prepared for deployment; package installation does not activate
+them or enable the staged account MCP tools.
