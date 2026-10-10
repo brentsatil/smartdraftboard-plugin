@@ -3,7 +3,22 @@
   "mcpServers": {
     "smartdraftboard": {
       "type": "streamable-http",
-      "url": "https://smartdraftboard.com/api/mcp"
+      "url": "https://smartdraftboard.com/api/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "mixed",
+            "client": {
+              "mode": "dcr"
+            },
+            "resource": "https://smartdraftboard.com/api/mcp",
+            "baseScopes": [
+              "assistant:profile:read",
+              "assistant:leagues:read"
+            ]
+          }
+        }
+      }
     }
   }
 }

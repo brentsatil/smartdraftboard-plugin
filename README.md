@@ -3,9 +3,8 @@
 Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
 AFL and NRL. This package provides one shared skill and eleven anonymous read-only tools
 for compatible MCP clients. The public tools need no SmartDraftBoard
-account or API key. Version 1.5 prepares optional account access; the protected
-rollout remains disabled pending actual account/client verification. The v1.5
-service and clean setup URL are deployed; directory approval is separate.
+account or API key. Version 1.6.1 enables optional OAuth account linking for Free
+saved-league reads and Pro advanced decisions. Directory approval is separate.
 
 ## Connect
 
@@ -45,7 +44,7 @@ NFL scoring supports PPR, half PPR and standard. NBA supports points, ESPN point
 SuperCoach; football supports FPL and supplied Fantrax EPL points rules. A public Sleeper league can supply its own supported
 scoring and lineup settings. Ambiguous names require clarification.
 
-## Version 1.6 — NBA daily streaming planner (prepared)
+## Version 1.6 — NBA daily streaming planner
 
 `plan_nba_streams` is a Pro decision tool that compares one supplied add/drop
 against holding your roster. Active linked Free accounts can use
@@ -66,9 +65,8 @@ available in your league.
 This version does not optimize categories, custom points, weekly locks, games
 caps, Sleeper Lock-In/Game Pick, same-day moves or multiple acquisitions. It does
 not include rest-of-season drop value. Only use the tool when the connected server
-advertises it: the package and matching service changes require deployment and
-client verification before publication. The existing eleven-tool service is not
-upgraded by installing this package alone.
+advertises it. Installing a package does not change the hosted service or grant
+account access; use the browser authorization flow to link your own account.
 
 ## Version 1.4
 
@@ -144,7 +142,7 @@ the task. Your assistant provider receives tool results under its own policies.
 Version 1.5.2 describes available functionality in the directory listing without
 subscription wording. Version 1.5.1 limits the OpenAI manifest to the required five positive and three
 negative review cases. `review-cases.json` retains the broader public regression
-cases, including Fantrax coverage, and staged linked-access cases. The linked
+cases, including Fantrax coverage, and linked-access cases. The linked
 walkthrough demonstrates the public integration in Claude, not OpenAI client
 certification.
 Public cases need no demo account. Protected cases require owner-controlled
@@ -158,10 +156,10 @@ alone does not publish a listing.
 
 The MIT license applies to plugin files, not third-party data or the hosted service.
 
-## Staged optional account access (1.6)
+## Optional account access (1.6.1)
 
-The server keeps `ASSISTANT_PRO_ENABLED` off by default. When disabled it lists
-only the eleven public tools. After authorized deployment and client checks,
+Production enables `ASSISTANT_PRO_ENABLED`. Removing this flag returns the server
+to eleven public tools. With the rollout enabled,
 `get_assistant_profile` works for active linked Free accounts;
 `list_my_leagues` and `read_my_league` work for active linked Free and Pro
 accounts and read only owned saved leagues
@@ -224,5 +222,5 @@ Advanced saved-league decisions and `plan_nba_streams` still require Pro. Existi
 public research access is unchanged. The MCP reads saved captures; it does not
 refresh a provider account. When source data is stale, direct the user to refresh
 on the NBA board and read again. Do not describe a saved timestamp as a live fetch.
-These changes are prepared for deployment; package installation does not activate
-them or enable the staged account MCP tools.
+Website NBA connections are Free. Account MCP tools require explicit OAuth
+linking; installing this package alone grants no access.

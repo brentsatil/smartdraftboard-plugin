@@ -161,8 +161,8 @@ connection; do not fabricate a tool result.
 
 ## Optional linked tools: use only when actually advertised
 
-The protected rollout is staged and off by default. Do not invent an available
-account integration from package instructions. Anonymous tools remain free.
+Use the connected server inventory to determine availability; package instructions
+alone do not establish account access. Anonymous tools remain free.
 When the server advertises them, `get_assistant_profile` supports active linked
 Free users; `list_my_leagues` and `read_my_league({leagueId})` provide saved facts to active
 linked Free and Pro accounts. `my_weekly_briefing({leagueId})`,
@@ -208,5 +208,5 @@ Advanced saved-league decisions and `plan_nba_streams` still require Pro. Existi
 public research access is unchanged. The MCP reads saved captures; it does not
 refresh a provider account. When source data is stale, direct the user to refresh
 on the NBA board and read again. Do not describe a saved timestamp as a live fetch.
-These changes are prepared for deployment; package installation does not activate
-them or enable the staged account MCP tools.
+Website NBA connections are Free. Account MCP tools require explicit OAuth
+linking; installing this package alone grants no access.
