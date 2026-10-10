@@ -1,8 +1,8 @@
 # SmartDraftBoard
 
 Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
-AFL and NRL. This package provides one shared skill and eleven read-only tools
-for compatible MCP clients. The eleven public tools need no SmartDraftBoard
+AFL and NRL. This package provides one shared skill and eleven anonymous read-only tools
+for compatible MCP clients. The public tools need no SmartDraftBoard
 account or API key. Version 1.5 prepares optional account access; the protected
 rollout remains disabled pending actual account/client verification. The v1.5
 service and clean setup URL are deployed; directory approval is separate.
@@ -38,11 +38,37 @@ read `plugin.json` and `mcp.json`. Both use `skills/fantasy-analysis/SKILL.md`.
 The tools are `analyze_roster`, `compare_players`, `player_outlook`, `rankings`,
 `evaluate_trade`, `weekly_decisions`, `injury_report`, `latest_news`,
 `search_players`, `find_sleeper_leagues`, and `model_accuracy`.
+Account-linked tools are described in Version 1.6 below.
 
 NFL scoring supports PPR, half PPR and standard. NBA supports points, ESPN points,
 9-category and 8-category values. AFL supports SuperCoach and Fantasy; NRL uses
 SuperCoach; football supports FPL and supplied Fantrax EPL points rules. A public Sleeper league can supply its own supported
 scoring and lineup settings. Ambiguous names require clarification.
+
+## Version 1.6 — NBA daily streaming planner (prepared)
+
+`plan_nba_streams` is a Pro decision tool that compares one supplied add/drop
+against holding your roster. Active linked Free accounts can use
+`list_my_leagues` and `read_my_league` for saved roster/rule facts. These reads
+do not require Pro. Existing anonymous one-off analysis stays free.
+It optimizes each future day's lineup in the loaded NBA week and reports usable
+starts, games blocked by stronger starters, lost drop starts and net projected
+points. Two useful off-night games can beat four games on crowded days.
+
+Supply the full roster and candidate names with actual league eligibility, exact
+starter slots, explicit `points` or `espn_points` scoring, and named acceptable
+drops or a confirmed open spot. The baseline is an optimized daily lineup, not
+what you have already submitted. Recommendations are conditional on the supplied
+rules, availability, waiver clearance and acquisition date. Missing schedules or
+projections withhold the comparison. No ownership percentage proves a player is
+available in your league.
+
+This version does not optimize categories, custom points, weekly locks, games
+caps, Sleeper Lock-In/Game Pick, same-day moves or multiple acquisitions. It does
+not include rest-of-season drop value. Only use the tool when the connected server
+advertises it: the package and matching service changes require deployment and
+client verification before publication. The existing eleven-tool service is not
+upgraded by installing this package alone.
 
 ## Version 1.4
 
@@ -132,12 +158,13 @@ alone does not publish a listing.
 
 The MIT license applies to plugin files, not third-party data or the hosted service.
 
-## Staged optional account access (1.5)
+## Staged optional account access (1.6)
 
 The server keeps `ASSISTANT_PRO_ENABLED` off by default. When disabled it lists
 only the eleven public tools. After authorized deployment and client checks,
 `get_assistant_profile` works for active linked Free accounts;
-`list_my_leagues` requires current Pro membership and lists owned saved leagues
+`list_my_leagues` and `read_my_league` work for active linked Free and Pro
+accounts and read only owned saved leagues
 so the user can select one. `my_weekly_briefing` and `evaluate_my_trade` require
 current Pro membership and an explicitly selected owned saved league. Upgrading after
 linking does not require a new grant; each call checks current membership.
@@ -174,7 +201,7 @@ are unavailable. A value comparison is not a full trade recommendation.
 The assistant provider receives the selected tool inputs and returned account or
 saved-league facts under its own policies. SmartDraftBoard records coarse events
 and authorized grant use; it does not put tokens, provider credentials or roster
-payloads into analytics. Only meaningful protected successes count as Pro use;
+payloads into analytics. Only meaningful advanced Pro successes count as Pro use;
 login, upgrade clicks, denials and all-unavailable answers do not.
 
 Claude, ChatGPT and Codex are intended clients, subject to each host's plan,

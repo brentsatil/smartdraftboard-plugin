@@ -65,14 +65,14 @@
   ],
   "staged_protected": [
     {
-      "description": "Linked Free profile and Pro denial",
-      "tools_triggered": "get_assistant_profile, list_my_leagues",
-      "expected_behavior": "With enabled rollout and owner-controlled Free account, profile works; league call returns PRO_REQUIRED, no private data or success activation."
+      "description": "Free facts and Pro decisions",
+      "tools_triggered": "get_assistant_profile, list_my_leagues, read_my_league, plan_nba_streams",
+      "expected_behavior": "With enabled rollout, an active linked Free account can read its profile and owned saved leagues. NBA streaming, weekly recommendations and trade decisions refuse with PRO_REQUIRED before reading model inputs; no Pro success activation is recorded for Free facts."
     },
     {
       "description": "Upgrade after linking",
-      "tools_triggered": "list_my_leagues",
-      "expected_behavior": "Same grant observes current Pro; owned saved selection and honest partial capability reasons. No other owner data."
+      "tools_triggered": "list_my_leagues, my_weekly_briefing",
+      "expected_behavior": "Same grant retains Free league reads before and after upgrade, and observes current Pro for advanced decisions; honest partial capability reasons. No other owner data."
     },
     {
       "description": "Saved NBA trade values only",
@@ -80,9 +80,32 @@
       "expected_behavior": "Verified named package values retain unit/horizon; incoming eligibility, legal lineups and overall verdict remain unavailable. No full verdict inferred."
     },
     {
-      "description": "Expired revoked inactive wrong-owner and disabled",
+      "description": "Expired membership, revoked credentials, inactive account, wrong owner and disabled",
       "tools_triggered": "get_assistant_profile, list_my_leagues, my_weekly_briefing, evaluate_my_trade",
-      "expected_behavior": "Fail closed; no activation or leaked private payload. Disabled server advertises eleven public tools only; those remain usable."
+      "expected_behavior": "Expired paid membership retains Free facts but cannot use Pro decisions. Invalid credentials, inactive accounts and wrong ownership fail closed, without activation or leaked payloads. Disabled server advertises eleven public tools only; those remain usable."
+    },
+    {
+      "description": "NBA off-night streaming value",
+      "prompt": "Which available NBA pickup gives my daily ESPN points roster more usable starts? Use my supplied roster, actual eligibility, starter slots and droppable players.",
+      "tools_triggered": "plan_nba_streams",
+      "expected_behavior": "Establish missing inputs, then compare exact daily optimized add/drop totals with holding; count bench congestion and drop cost. Preserve conditional availability and source dates."
+    },
+    {
+      "description": "NBA unsupported lineup mode",
+      "prompt": "Optimize my Sleeper NBA Lock-In choices and 9-category matchup using your daily streamer tool.",
+      "tools_triggered": "none",
+      "expected_behavior": "Do not apply the daily points planner to Lock-In or categories. Explain its boundaries and offer supported comparisons without inventing a category or Lock-In optimum."
+    },
+    {
+      "description": "NBA missing schedule",
+      "prompt": "Compare my two supplied pickups even if one is missing a dated schedule.",
+      "tools_triggered": "plan_nba_streams",
+      "expected_behavior": "Return incomplete with no winner if required candidate schedule or projections are missing; missing games are not a blank."
+    },
+    {
+      "description": "No cross-account Free data",
+      "tools_triggered": "read_my_league",
+      "expected_behavior": "A linked Free caller requesting another owner's league receives the same unavailable response as a missing or deactivated league; no roster or registry read follows denial."
     }
   ],
   "verification_status": "Staged protected cases need authorized deployed owner-controlled accounts and real intended clients; local synthetic coverage is not client certification."

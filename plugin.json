@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smartdraftboard",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "SmartDraftBoard",
         "shortDescription": "Your fantasy roster, explained",
-        "longDescription": "Compare fantasy players, analyze pasted rosters or public Sleeper leagues, and inspect available model backtests for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL. Eleven read-only tools report scoring-specific projections, original source dates, uncertainty and missing-data warnings. Recommendations depend on supported scoring and sufficient evidence. This release cannot access private saved leagues, change lineups, submit trades or place bets.",
+        "longDescription": "Compare fantasy players, analyze pasted rosters or public Sleeper leagues, and inspect available model backtests for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL. Read-only tools report scoring-specific projections, original source dates, uncertainty and missing-data warnings. When advertised, the NBA daily streaming planner compares supplied add/drop candidates by usable starts and net projected points. Recommendations depend on supported scoring and sufficient evidence. This release cannot access private saved leagues, change lineups, submit trades or place bets.",
         "developerName": "SmartDraftBoard",
         "capabilities": [
           "Read"
@@ -93,10 +93,10 @@
         },
         "commerce": false,
         "demo_recording_url": "https://github.com/brentsatil/smartdraftboard-plugin/releases/download/v1.0.0/smartdraftboard-live-demo.mp4",
-        "commerce_description": "Public analysis is free. Optional saved league tools require current Pro membership managed on the website; MCP does not process payments or purchases."
+        "commerce_description": "Public analysis and enabled authenticated saved-league fact reads are free. Advanced NBA streaming and saved weekly/trade decisions require current Pro membership managed on the website; MCP does not process payments or purchases."
       },
       "publication": {
-        "release_notes": "1.5.2 removes subscription wording from the directory description after automated metadata feedback and retains exactly five positive and three negative review cases. The v1.5 service and clean setup URL are deployed, with eleven anonymous read-only tools. Optional OAuth-linked profile and Pro saved-league tools remain disabled pending actual account/client verification. Original source dates, missing evidence and value-only trade limits are disclosed; no accuracy lift or universal saved sport/provider support is claimed. The linked walkthrough demonstrates the public integration in Claude, not OpenAI client certification."
+        "release_notes": "1.6.0 prepares free authenticated list_my_leagues/read_my_league saved-fact reads and Pro plan_nba_streams, alongside Pro saved weekly/trade decisions. Existing eleven anonymous analysis tools remain free. The streaming planner compares one NBA daily-points add/drop by usable starts and net projected gain; it does not verify free-agent availability. Matching server deployment is required. Optional linked tools remain disabled pending actual account/client verification. No head-to-head accuracy advantage or category/weekly-lock optimization is claimed."
       }
     }
   }
