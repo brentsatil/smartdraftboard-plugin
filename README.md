@@ -3,7 +3,7 @@
 Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
 AFL and NRL. This package provides one shared skill and eleven anonymous read-only tools
 for compatible MCP clients. The public tools need no SmartDraftBoard
-account or API key. Version 1.6.1 enables optional OAuth account linking for Free
+account or API key. Version 1.6.2 enables optional OAuth account linking for Free
 saved-league reads and Pro advanced decisions. Directory approval is separate.
 
 ## Connect
@@ -156,7 +156,7 @@ alone does not publish a listing.
 
 The MIT license applies to plugin files, not third-party data or the hosted service.
 
-## Optional account access (1.6.1)
+## Optional account access (1.6.2)
 
 Production enables `ASSISTANT_PRO_ENABLED`. Removing this flag returns the server
 to eleven public tools. With the rollout enabled,
@@ -166,6 +166,12 @@ accounts and read only owned saved leagues
 so the user can select one. `my_weekly_briefing` and `evaluate_my_trade` require
 current Pro membership and an explicitly selected owned saved league. Upgrading after
 linking does not require a new grant; each call checks current membership.
+Free or expired paid membership returns `status: "blocked"`, `error_code: "PRO_REQUIRED"`,
+`access.allowed: false` and `data: null` for advanced tools. The completed membership
+check uses `isError: false` to preserve this explicit outcome in ChatGPT; it is not
+a successful decision. No decision inputs are read, calculated or counted as Pro
+activation. Invalid authentication and invalid arguments remain tool errors.
+
 Expired or inactive membership, revoked/expired credentials, wrong ownership
 and incomplete evidence do not unlock recommendations.
 
