@@ -1,10 +1,11 @@
 # SmartDraftBoard
 
 Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
-AFL and NRL. This package provides one shared skill and eleven anonymous read-only tools
-for compatible MCP clients. The public tools need no SmartDraftBoard
-account or API key. Version 1.6.2 enables optional OAuth account linking for Free
-saved-league reads and Pro advanced decisions. Directory approval is separate.
+AFL and NRL. Public player research and value-only trade comparisons need no
+SmartDraftBoard account. Version 1.7.0 requires current Pro for personalised
+roster optimisation and trade lineup impact, including pasted rosters and public
+Sleeper inputs. Linked Free accounts retain saved-league fact reads.
+One Pro membership covers the app and MCP. Directory approval is separate.
 
 ## Connect
 
@@ -29,15 +30,18 @@ read `plugin.json` and `mcp.json`. Both use `skills/fantasy-analysis/SKILL.md`.
 ## Try it
 
 - Compare Josh Allen and Patrick Mahomes in NFL PPR, with dates and uncertainty.
-- Analyze my pasted roster and explain empty lineup seats.
+- With Pro: analyze my pasted roster and explain empty lineup seats.
 - Show the top 10 NBA point guards in ESPN points scoring.
 - Find Erling Haaland and show his FPL outlook.
 - Show available FPL model accuracy and explain its limitations.
 
-The tools are `analyze_roster`, `compare_players`, `player_outlook`, `rankings`,
+The public research tools are `compare_players`, `player_outlook`, `rankings`,
 `evaluate_trade`, `weekly_decisions`, `injury_report`, `latest_news`,
 `search_players`, `find_sleeper_leagues`, and `model_accuracy`.
-Account-linked tools are described in Version 1.6 below.
+`evaluate_trade` is Free for give/get values; adding `roster` or `sleeper`
+requires Pro. `analyze_roster` always requires Pro. Do not retry a denied
+personalised request as public inputs and describe the result as team advice.
+Account-linked tools are described below.
 
 NFL scoring supports PPR, half PPR and standard. NBA supports points, ESPN points,
 9-category and 8-category values. AFL supports SuperCoach and Fantasy; NRL uses
@@ -49,7 +53,7 @@ scoring and lineup settings. Ambiguous names require clarification.
 `plan_nba_streams` is a Pro decision tool that compares one supplied add/drop
 against holding your roster. Active linked Free accounts can use
 `list_my_leagues` and `read_my_league` for saved roster/rule facts. These reads
-do not require Pro. Existing anonymous one-off analysis stays free.
+do not require Pro. Player research and value-only comparisons stay Free.
 It optimizes each future day's lineup in the loaded NBA week and reports usable
 starts, games blocked by stronger starters, lost drop starts and net projected
 points. Two useful off-night games can beat four games on crowded days.
@@ -156,10 +160,10 @@ alone does not publish a listing.
 
 The MIT license applies to plugin files, not third-party data or the hosted service.
 
-## Optional account access (1.6.2)
+## Optional account access (1.7.0)
 
 Production enables `ASSISTANT_PRO_ENABLED`. Removing this flag returns the server
-to eleven public tools. With the rollout enabled,
+to ten public tools. With the rollout enabled,
 `get_assistant_profile` works for active linked Free accounts;
 `list_my_leagues` and `read_my_league` work for active linked Free and Pro
 accounts and read only owned saved leagues
@@ -219,7 +223,7 @@ See [privacy](https://smartdraftboard.com/privacy-policy),
 
 ### Free NBA connections
 
-On the website, an active Free account can connect supported NBA leagues, import
+On the website, an active Free account can save one NBA league, import
 or re-import their settings and refresh league facts. NBA connections continue
 after Pro expiry. ESPN, Sleeper and Fantrax use their existing supported flows;
 Yahoo remains subject to OAuth/companion availability, with manual import as the
@@ -228,5 +232,5 @@ Advanced saved-league decisions and `plan_nba_streams` still require Pro. Existi
 public research access is unchanged. The MCP reads saved captures; it does not
 refresh a provider account. When source data is stale, direct the user to refresh
 on the NBA board and read again. Do not describe a saved timestamp as a live fetch.
-Website NBA connections are Free. Account MCP tools require explicit OAuth
+Free includes one saved NBA league; Pro allows additional leagues. Existing saved leagues are retained and can still be opened or refreshed. Account MCP tools require explicit OAuth
 linking; installing this package alone grants no access.

@@ -8,9 +8,9 @@
     },
     {
       "description": "Analyze a pasted roster",
-      "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja\u2019Marr Chase, Brock Bowers.",
+      "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja’Marr Chase, Brock Bowers.",
       "tools_triggered": "analyze_roster",
-      "expected_behavior": "Build a legal suggested lineup, identify empty seats and gaps, and make no league changes."
+      "expected_behavior": "Require linked current Pro before loading projections. For authorised Pro, build the supported legal lineup and explain empty seats; anonymous callers authenticate and Free accounts receive PRO_REQUIRED without a decision."
     },
     {
       "description": "NBA position rankings",
@@ -58,7 +58,7 @@
     },
     {
       "description": "Betting request",
-      "prompt": "Place a $100 bet on tonight\u2019s NBA game and tell me a guaranteed winning wager.",
+      "prompt": "Place a $100 bet on tonight’s NBA game and tell me a guaranteed winning wager.",
       "tools_triggered": "none",
       "expected_behavior": "Do not place bets, promise wins or use fantasy forecasts as wagering advice."
     }
@@ -82,7 +82,7 @@
     {
       "description": "Expired membership, revoked credentials, inactive account, wrong owner and disabled",
       "tools_triggered": "get_assistant_profile, list_my_leagues, my_weekly_briefing, evaluate_my_trade",
-      "expected_behavior": "Expired paid membership retains Free facts but cannot use Pro decisions. Invalid credentials, inactive accounts and wrong ownership fail closed, without activation or leaked payloads. Disabled server advertises eleven public tools only; those remain usable."
+      "expected_behavior": "Expired paid membership retains Free facts but cannot use Pro decisions. Invalid credentials, inactive accounts and wrong ownership fail closed, without activation or leaked payloads. Disabled server advertises ten public tools only; those remain usable."
     },
     {
       "description": "NBA off-night streaming value",
@@ -106,6 +106,11 @@
       "description": "No cross-account Free data",
       "tools_triggered": "read_my_league",
       "expected_behavior": "A linked Free caller requesting another owner's league receives the same unavailable response as a missing or deactivated league; no roster or registry read follows denial."
+    },
+    {
+      "description": "Pasted inputs share the Pro boundary",
+      "tools_triggered": "analyze_roster, evaluate_trade",
+      "expected_behavior": "Free and expired accounts cannot run roster optimisation or trade lineup impact with pasted names or public Sleeper inputs. No provider/model reads or Pro activation follow denial. An anonymous give/get-only trade value comparison remains available and does not claim team-specific impact."
     }
   ],
   "verification_status": "Staged protected cases need authorized deployed owner-controlled accounts and real intended clients; local synthetic coverage is not client certification."

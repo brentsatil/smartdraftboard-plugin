@@ -1,6 +1,6 @@
 {
   "name": "smartdraftboard",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "Read-only fantasy analysis with optional OAuth account linking: owned saved facts are Free; advanced decisions require Pro.",
   "author": {
     "name": "SmartDraftBoard",

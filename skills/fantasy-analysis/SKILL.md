@@ -6,8 +6,10 @@ description: Analyze fantasy rosters, compare players, evaluate trades and read 
 # SmartDraftBoard fantasy analysis
 
 Use the connected SmartDraftBoard MCP tools for the requested fantasy decision.
-One-off analysis needs no SmartDraftBoard account. The tools read data and return
-advice; they cannot set a lineup, execute a trade, claim a player or save a league.
+Player research and value-only trade comparisons need no account. Full roster
+optimisation and trade lineup impact require a linked account with current Pro,
+including pasted rosters and public Sleeper inputs. The same membership covers
+the app and MCP. Tools cannot set a lineup, execute a trade or claim a player.
 
 ## Choose the question and tool
 
@@ -17,8 +19,9 @@ advice; they cannot set a lineup, execute a trade, claim a player or save a leag
 | Which of these 2–4 players should I start? | `compare_players` |
 | Tell me about one player | `player_outlook` |
 | Rank a position for this period or the season | `rankings` |
-| Set out my best legal lineup and alternatives | `analyze_roster` |
-| Is this trade useful for my roster? | `evaluate_trade` |
+| Set out my best legal lineup and alternatives | `analyze_roster` (Pro) |
+| Compare trade package values without a roster | `evaluate_trade` (Free: omit roster/sleeper) |
+| Is this trade useful for my roster? | `evaluate_trade` (Pro when roster/sleeper supplied) |
 | Which of my Sleeper leagues should I use? | `find_sleeper_leagues` |
 | Captain or streaming choices across the player pool | `weekly_decisions` |
 | Compare one NBA pickup by usable daily starts and net points | `plan_nba_streams` (when advertised) |
@@ -203,7 +206,7 @@ withholds dependent decisions. These labels do not establish prediction lift.
 
 ### Free NBA connections
 
-On the website, an active Free account can connect supported NBA leagues, import
+On the website, an active Free account can save one NBA league, import
 or re-import their settings and refresh league facts. NBA connections continue
 after Pro expiry. ESPN, Sleeper and Fantrax use their existing supported flows;
 Yahoo remains subject to OAuth/companion availability, with manual import as the
@@ -212,5 +215,5 @@ Advanced saved-league decisions and `plan_nba_streams` still require Pro. Existi
 public research access is unchanged. The MCP reads saved captures; it does not
 refresh a provider account. When source data is stale, direct the user to refresh
 on the NBA board and read again. Do not describe a saved timestamp as a live fetch.
-Website NBA connections are Free. Account MCP tools require explicit OAuth
+Free includes one saved NBA league; Pro allows additional leagues. Existing saved leagues are retained and can still be opened or refreshed. Account MCP tools require explicit OAuth
 linking; installing this package alone grants no access.
