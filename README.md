@@ -2,7 +2,7 @@
 
 Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
 AFL and NRL. Public player research and value-only trade comparisons need no
-SmartDraftBoard account. Version 1.7.0 requires current Pro for personalised
+SmartDraftBoard account. Full roster analysis requires current Pro for personalised
 roster optimisation and trade lineup impact, including pasted rosters and public
 Sleeper inputs. Linked Free accounts retain saved-league fact reads.
 One Pro membership covers the app and MCP. Directory approval is separate.
@@ -25,7 +25,25 @@ claude --plugin-dir /absolute/path/to/smartdraftboard-plugin
 ```
 
 Claude reads `.claude-plugin/plugin.json` and `.mcp.json`. Portable plugin clients
-read `plugin.json` and `mcp.json`. Both use `skills/fantasy-analysis/SKILL.md`.
+read `plugin.json` and `mcp.json`. Both load the skills under `skills/`.
+
+## Version 1.8 — focused Claude workflows
+
+Three skills route player research, saved-league briefings and NBA streaming to
+appropriate tools. They preserve actual league settings, explain evidence gaps,
+and distinguish projections from completed-game scores. The Claude manifest now
+uses the bundled SmartDraftBoard logo. Model calculations and access scopes are
+unchanged; this release makes no new accuracy claim.
+
+In Claude Code, invoke `/smartdraftboard:fantasy-analysis`,
+`/smartdraftboard:league-briefing` or `/smartdraftboard:nba-streaming`. In other
+Claude surfaces, ask naturally; availability follows the installed plugin and
+connector. A connector alone supplies tools, while the plugin supplies these
+workflows too.
+
+See [Claude connection setup](docs/claude-connector.md) for account linking,
+verification and troubleshooting. The public plugin and the standalone connector
+have separate directory review states.
 
 ## Try it
 
