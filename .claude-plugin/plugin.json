@@ -1,7 +1,7 @@
 {
   "name": "smartdraftboard",
-  "version": "1.7.0",
-  "description": "Read-only fantasy analysis with optional OAuth account linking: owned saved facts are Free; advanced decisions require Pro.",
+  "version": "1.8.0",
+  "description": "Fantasy player research, saved-league briefings and NBA streaming with dated evidence. Optional account linking; advanced decisions require Pro.",
   "author": {
     "name": "SmartDraftBoard",
     "url": "https://smartdraftboard.com"
@@ -19,5 +19,7 @@
     "fantasy-sports",
     "rosters",
     "projections"
-  ]
+  ],
+  "icon": "./assets/logo.png",
+  "license": "MIT"
 }

@@ -11,6 +11,32 @@ optimisation and trade lineup impact require a linked account with current Pro,
 including pasted rosters and public Sleeper inputs. The same membership covers
 the app and MCP. Tools cannot set a lineup, execute a trade or claim a player.
 
+## Establish the evidence before answering
+
+Confirm sport, platform, scoring and the requested period from the conversation.
+If a saved league is requested, use the `league-briefing` skill and linked tools;
+do not replace saved rules with a public preset. For an NBA add/drop plan, use
+`nba-streaming` after establishing the league's lineup mode. Ask one compact
+question for decision-changing missing settings, not a long intake form.
+
+A forecast is not a result. Never use projected points, a season average or a
+current player total as a completed gameweek score. For retrospective reviews,
+require actual results tied to the exact player, competition, season and period;
+if the tools do not provide those results, say that verification is unavailable.
+Do not reuse a familiar name or an old player ID to fill a missing identity.
+
+Check the returned period and source dates before using a number. If a response
+is stale, targets a different period or cannot establish current availability,
+label that limitation next to the affected recommendation. A newly generated
+response does not make old inputs fresh. Do not invent a timestamp or silently
+use historical rankings as today's lineup advice.
+
+Lead with a supported decision or the exact blocker, then a compact comparison
+of the relevant values with units and period. Separate model projections,
+availability-adjusted estimates and verified actuals. Finish with the material
+assumptions, data date and useful source/board links. If a score is missing, show
+“unavailable” rather than zero; if the decision is incomplete, give no winner.
+
 ## Choose the question and tool
 
 | User's question | Tool |
