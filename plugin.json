@@ -28,7 +28,7 @@
         "composerIcon": "./assets/logo.png",
         "logo": "./assets/logo.png",
         "defaultPrompt": [
-          "Compare Josh Allen and Patrick Mahomes for my NFL PPR lineup.",
+          "Help me get started with a free SmartDraftBoard player comparison.",
           "With Pro, analyze my FPL squad and suggest a legal starting formation.",
           "Show the top 10 NBA guards in ESPN points scoring."
         ],
@@ -68,6 +68,30 @@
               "prompt": "Show the available FPL model accuracy and explain what the measured error means.",
               "tools_triggered": "model_accuracy",
               "expected_behavior": "Read stored backtest evidence, explain its date and limitations, and report unavailable evidence honestly."
+            },
+            {
+              "description": "Typo and team-aware identity discovery",
+              "prompt": "Find Josh Alen BUF in the NFL data. Confirm who this is before comparing him with Patrick Mahomes in PPR.",
+              "tools_triggered": "search_players, compare_players",
+              "expected_behavior": "Search with the sport and team hint; label a spelling suggestion and obtain confirmation before comparison. Do not infer identity from projected value."
+            },
+            {
+              "description": "Direct comparison without redundant searches",
+              "prompt": "Compare Jalen Brunson and Stephen Curry in NBA ESPN points, with the source dates and projection period.",
+              "tools_triggered": "compare_players",
+              "expected_behavior": "Call compare_players directly with sport nba and scoring espn_points. Only search if identity needs clarification. Preserve missing-data limits."
+            },
+            {
+              "description": "Fantrax scoring argument recovery",
+              "prompt": "Compare Erling Haaland and Bukayo Saka for Fantrax EPL using the complete scoring settings I provide.",
+              "tools_triggered": "compare_players",
+              "expected_behavior": "Obtain complete scoring if missing. Set platform fantrax, pass the fantrax settings object and omit scoring; never send scoring=fantrax or substitute FPL."
+            },
+            {
+              "description": "First use with an existing connection",
+              "prompt": "Help me get started with SmartDraftBoard. Try an NBA ESPN points comparison of Jalen Brunson and Stephen Curry.",
+              "tools_triggered": "compare_players",
+              "expected_behavior": "Reuse advertised tools and call the public comparison directly. Do not require signup, inspect an account or ask to reinstall. Show source dates and missing evidence; claim a verified response only after a real tool result."
             }
           ],
           "negative": [
@@ -96,8 +120,9 @@
         "commerce_description": "Public player research, value-only trade comparisons and enabled saved-league fact reads are Free. Full roster optimisation, roster-aware trades and NBA streaming require current Pro, including pasted or public Sleeper inputs. One website membership also covers MCP; MCP does not process payments."
       },
       "publication": {
-        "release_notes": "1.9.0 improves player discovery with source aliases, initials, team hints and labelled spelling suggestions. Adds structured correction and retry guidance, clearer Fantrax arguments, and shared Claude/ChatGPT workflow examples. Requires the matching MCP service deployment; read-only scopes and Free/Pro boundaries are unchanged."
-      }
+        "release_notes": "1.9.0 adds a guided setup skill and simpler first-use examples, improves player discovery with aliases, initials and labelled spelling suggestions, and adds structured correction/retry guidance. Read-only scopes and Free/Pro boundaries are unchanged. New response fields require the matching MCP service deployment."
+      },
+      "onboardingSkill": "./skills/setup/SKILL.md"
     }
   }
 }

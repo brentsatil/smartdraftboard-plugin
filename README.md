@@ -32,6 +32,20 @@ or [ChatGPT setup guide](https://smartdraftboard.com/guides/chatgpt-fantasy-plug
 then try a [fantasy prompt for your sport](https://smartdraftboard.com/guides/fantasy-ai-prompts).
 For exact arguments and failure recovery, see [tool workflows](docs/tool-workflows.md).
 
+## Start with one free question
+
+Open [guided setup](https://smartdraftboard.com/assistant-plugin#start-here),
+choose Claude or ChatGPT, connect, and copy a first question for your sport.
+Public comparisons need no SmartDraftBoard account, API key or league import.
+In ChatGPT, create and install the custom plugin, then select it with `@` in a
+Work chat. Custom-connection availability depends on your account/workspace.
+
+With this package installed, run its setup action where supported, or ask
+“Help me get started with SmartDraftBoard.” The included `setup` skill reuses
+an existing connection and guides a first public tool result. An MCP-only
+connection does not include packaged skills. Check the actual tool response;
+opening a guide or copying a prompt is not proof that the connection works.
+
 ## Version 1.9 — better player discovery and recovery
 
 The matching MCP service supports source aliases, initials, team/position hints
