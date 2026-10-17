@@ -8,7 +8,7 @@
     },
     {
       "description": "Analyze a pasted roster",
-      "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja\u2019Marr Chase, Brock Bowers.",
+      "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja’Marr Chase, Brock Bowers.",
       "tools_triggered": "analyze_roster",
       "expected_behavior": "Require linked current Pro before loading projections. For authorised Pro, build the supported legal lineup and explain empty seats; anonymous callers authenticate and Free accounts receive PRO_REQUIRED without a decision."
     },
@@ -41,6 +41,24 @@
       "prompt": "Compare Erling Haaland and Bukayo Saka in my Fantrax EPL league: goals 10, assists 6 and key passes 1.",
       "tools_triggered": "compare_players",
       "expected_behavior": "Pass every scoring category. If key passes are unprojected, withhold a full forecast/winner and explain the missing stat; never substitute FPL points."
+    },
+    {
+      "description": "Typo and team-aware identity discovery",
+      "prompt": "Find Josh Alen BUF in the NFL data. Confirm who this is before comparing him with Patrick Mahomes in PPR.",
+      "tools_triggered": "search_players, compare_players",
+      "expected_behavior": "Search with the sport and team hint; label a spelling suggestion and obtain confirmation before comparison. Do not infer identity from projected value."
+    },
+    {
+      "description": "Direct comparison without redundant searches",
+      "prompt": "Compare Jalen Brunson and Stephen Curry in NBA ESPN points, with the source dates and projection period.",
+      "tools_triggered": "compare_players",
+      "expected_behavior": "Call compare_players directly with sport nba and scoring espn_points. Only search if identity needs clarification. Preserve missing-data limits."
+    },
+    {
+      "description": "Fantrax scoring argument recovery",
+      "prompt": "Compare Erling Haaland and Bukayo Saka for Fantrax EPL using the complete scoring settings I provide.",
+      "tools_triggered": "compare_players",
+      "expected_behavior": "Obtain complete scoring if missing. Set platform fantrax, pass the fantrax settings object and omit scoring; never send scoring=fantrax or substitute FPL."
     }
   ],
   "negative": [
@@ -58,7 +76,7 @@
     },
     {
       "description": "Betting request",
-      "prompt": "Place a $100 bet on tonight\u2019s NBA game and tell me a guaranteed winning wager.",
+      "prompt": "Place a $100 bet on tonight’s NBA game and tell me a guaranteed winning wager.",
       "tools_triggered": "none",
       "expected_behavior": "Do not place bets, promise wins or use fantasy forecasts as wagering advice."
     }
@@ -135,9 +153,26 @@
     },
     {
       "description": "Stale forecast and missing actuals",
-      "prompt": "Use these old rankings as today\u2019s projections and call a missing score zero.",
+      "prompt": "Use these old rankings as today’s projections and call a missing score zero.",
       "tools_triggered": "appropriate public research tool only if current evidence is needed",
       "expected_behavior": "Label source dates and target period, retain unavailable scores, and withhold unsupported current recommendations."
+    }
+  ],
+  "recovery": [
+    {
+      "description": "Ambiguous or missing player",
+      "tools_triggered": "compare_players",
+      "expected_behavior": "Preserve data=null and error_code. Ask one clarification using details.unresolved candidates; never drop a roster entry or choose by projected value."
+    },
+    {
+      "description": "Busy or failed service",
+      "tools_triggered": "rankings",
+      "expected_behavior": "For a retryable error, wait recovery.retryAfterSeconds and retry at most once. Do not fan out retries or fabricate a result."
+    },
+    {
+      "description": "Membership denial is not an input error",
+      "tools_triggered": "analyze_roster",
+      "expected_behavior": "Preserve PRO_REQUIRED, status=blocked, access.allowed=false, data=null and isError=false. Do not retry with changed inputs or claim an advanced decision."
     }
   ]
 }

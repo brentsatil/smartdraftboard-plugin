@@ -39,6 +39,16 @@ assumptions, data date and useful source/board links. If a score is missing, sho
 
 ## Choose the question and tool
 
+For a comparison with known names, call `compare_players` directly with the
+sport and scoring. Do not spend a search call per player unless identity is
+uncertain or a result asks for clarification. For an uncertain name, provide
+the known sport and team/position hint to `search_players`. Its `matchType`
+distinguishes exact/alias matches, partial matches and spelling suggestions.
+Suggestions are possible identities, not corrections the user has confirmed.
+Resolve ambiguity using the returned name, team and positions, never by choosing
+the highest projected player. Search projections use the sport's default scoring;
+run the requested analysis with the user's scoring before comparing values.
+
 | User's question | Tool |
 | --- | --- |
 | Who is this player? | `search_players` |
@@ -181,6 +191,31 @@ scoring. Fantrax provider authentication is not performed through chat: never re
   queries to export the underlying player dataset.
 - On a tool error, explain the correction or missing data. A busy response gives
   a retry delay; do not repeatedly call it within that interval.
+
+### Recover from a failed call
+
+When available, use `error_code` and `recovery` from the structured result (the
+text result carries the same JSON). Older deployed versions may return only a
+message; follow its stated correction without assuming these fields exist.
+
+- `AMBIGUOUS_PLAYER` or `PLAYER_NOT_FOUND`: use `details.unresolved` to ask one
+  compact clarification with candidate names, teams and positions. Keep all
+  unresolved names in the user's roster; do not silently omit or replace them.
+- `UNSUPPORTED_SCORING`: choose from `details.supportedScoring` only if it matches
+  the user's actual league. For Fantrax, omit `scoring` and supply
+  `platform: "fantrax"` plus the complete `fantrax` settings object. Never pass
+  `scoring: "fantrax"` or silently change custom scoring to a public preset.
+- `INVALID_ARGUMENTS`: correct the stated input or ask for the missing fact.
+  Do not retry unchanged arguments.
+- `AUTH_REQUIRED` or `INSUFFICIENT_SCOPE`: let the client complete the browser
+  OAuth challenge, then retry. Do not request credentials in the conversation.
+- `QUOTA_EXCEEDED` or `TOOL_FAILED`: when `retryable` is true, wait at least
+  `recovery.retryAfterSeconds` and retry once. If it fails again, report the
+  unavailable result and offer the supplied website link. Do not fan out retries.
+- `DISABLED`: use the website; reconnecting cannot enable a disabled server tool.
+
+An error with `data: null` contains no fantasy decision. `PRO_REQUIRED` remains
+the distinct membership denial described below; retries cannot upgrade access.
 
 Stay within fantasy analysis. Do not derive sportsbook wagers, ATS picks, betting
 stakes or pick'em betting recommendations from these tools. Never ask for fantasy
