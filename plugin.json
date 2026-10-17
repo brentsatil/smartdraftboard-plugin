@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smartdraftboard",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
@@ -28,7 +28,7 @@
         "composerIcon": "./assets/logo.png",
         "logo": "./assets/logo.png",
         "defaultPrompt": [
-          "Compare Josh Allen and Patrick Mahomes for my NFL PPR lineup.",
+          "Help me get started with a free SmartDraftBoard player comparison.",
           "With Pro, analyze my FPL squad and suggest a legal starting formation.",
           "Show the top 10 NBA guards in ESPN points scoring."
         ],
@@ -96,8 +96,9 @@
         "commerce_description": "Public player research, value-only trade comparisons and enabled saved-league fact reads are Free. Full roster optimisation, roster-aware trades and NBA streaming require current Pro, including pasted or public Sleeper inputs. One website membership also covers MCP; MCP does not process payments."
       },
       "publication": {
-        "release_notes": "1.9.0 improves player discovery with source aliases, initials, team hints and labelled spelling suggestions. Adds structured correction and retry guidance, clearer Fantrax arguments, and shared Claude/ChatGPT workflow examples. Requires the matching MCP service deployment; read-only scopes and Free/Pro boundaries are unchanged."
-      }
+        "release_notes": "1.10.0 adds a guided setup skill and simpler first-use examples for Claude and ChatGPT. Reuses existing connections and starts with a free public comparison before optional account workflows. Keeps the 1.9 identity and error-recovery instructions; read-only scopes and Free/Pro boundaries are unchanged. Structured error fields require MCP service 1.9 or later."
+      },
+      "onboardingSkill": "./skills/setup/SKILL.md"
     }
   }
 }
