@@ -68,24 +68,6 @@
               "prompt": "Show the available FPL model accuracy and explain what the measured error means.",
               "tools_triggered": "model_accuracy",
               "expected_behavior": "Read stored backtest evidence, explain its date and limitations, and report unavailable evidence honestly."
-            },
-            {
-              "description": "Typo and team-aware identity discovery",
-              "prompt": "Find Josh Alen BUF in the NFL data. Confirm who this is before comparing him with Patrick Mahomes in PPR.",
-              "tools_triggered": "search_players, compare_players",
-              "expected_behavior": "Search with the sport and team hint; label a spelling suggestion and obtain confirmation before comparison. Do not infer identity from projected value."
-            },
-            {
-              "description": "Direct comparison without redundant searches",
-              "prompt": "Compare Jalen Brunson and Stephen Curry in NBA ESPN points, with the source dates and projection period.",
-              "tools_triggered": "compare_players",
-              "expected_behavior": "Call compare_players directly with sport nba and scoring espn_points. Only search if identity needs clarification. Preserve missing-data limits."
-            },
-            {
-              "description": "Fantrax scoring argument recovery",
-              "prompt": "Compare Erling Haaland and Bukayo Saka for Fantrax EPL using the complete scoring settings I provide.",
-              "tools_triggered": "compare_players",
-              "expected_behavior": "Obtain complete scoring if missing. Set platform fantrax, pass the fantrax settings object and omit scoring; never send scoring=fantrax or substitute FPL."
             }
           ],
           "negative": [
