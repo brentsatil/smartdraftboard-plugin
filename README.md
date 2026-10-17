@@ -32,7 +32,7 @@ or [ChatGPT setup guide](https://smartdraftboard.com/guides/chatgpt-fantasy-plug
 then try a [fantasy prompt for your sport](https://smartdraftboard.com/guides/fantasy-ai-prompts).
 For exact arguments and failure recovery, see [tool workflows](docs/tool-workflows.md).
 
-## Start with one free question
+## Version 1.10 — easier setup and first use
 
 Open [guided setup](https://smartdraftboard.com/assistant-plugin#start-here),
 choose Claude or ChatGPT, connect, and copy a first question for your sport.
