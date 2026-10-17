@@ -59,6 +59,12 @@
       "prompt": "Compare Erling Haaland and Bukayo Saka for Fantrax EPL using the complete scoring settings I provide.",
       "tools_triggered": "compare_players",
       "expected_behavior": "Obtain complete scoring if missing. Set platform fantrax, pass the fantrax settings object and omit scoring; never send scoring=fantrax or substitute FPL."
+    },
+    {
+      "description": "First use with an existing connection",
+      "prompt": "Help me get started with SmartDraftBoard. Try an NBA ESPN points comparison of Jalen Brunson and Stephen Curry.",
+      "tools_triggered": "compare_players",
+      "expected_behavior": "Reuse advertised tools and call the public comparison directly. Do not require signup, inspect an account or ask to reinstall. Show source dates and missing evidence; claim a verified response only after a real tool result."
     }
   ],
   "negative": [
@@ -173,6 +179,11 @@
       "description": "Membership denial is not an input error",
       "tools_triggered": "analyze_roster",
       "expected_behavior": "Preserve PRO_REQUIRED, status=blocked, access.allowed=false, data=null and isError=false. Do not retry with changed inputs or claim an advanced decision."
+    },
+    {
+      "description": "Setup without an available connection",
+      "tools_triggered": "none",
+      "expected_behavior": "Explain that SmartDraftBoard must be enabled and offer the appropriate setup guide. Do not invent a tool response or count install/copy actions as activation."
     }
   ]
 }
