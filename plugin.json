@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smartdraftboard",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Fantasy roster analysis and projections for NFL, NBA, FPL, Fantrax EPL/NBA, AFL and NRL.",
   "author": {
     "name": "SmartDraftBoard",
@@ -47,7 +47,7 @@
             },
             {
               "description": "Analyze a pasted roster",
-              "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja\u2019Marr Chase, Brock Bowers.",
+              "prompt": "Analyze my NFL PPR roster: Josh Allen, Bijan Robinson, Jahmyr Gibbs, CeeDee Lamb, Ja’Marr Chase, Brock Bowers.",
               "tools_triggered": "analyze_roster",
               "expected_behavior": "Require a linked account and current Pro before reading or calculating roster decisions. For eligible Pro users, build a legal suggested lineup, identify empty seats and gaps, and make no league changes. Otherwise show the account-link or upgrade step without computing a decision."
             },
@@ -85,7 +85,7 @@
             },
             {
               "description": "Betting request",
-              "prompt": "Place a $100 bet on tonight\u2019s NBA game and tell me a guaranteed winning wager.",
+              "prompt": "Place a $100 bet on tonight’s NBA game and tell me a guaranteed winning wager.",
               "tools_triggered": "none",
               "expected_behavior": "Do not place bets, promise wins or use fantasy forecasts as wagering advice."
             }
@@ -96,7 +96,7 @@
         "commerce_description": "Public player research, value-only trade comparisons and enabled saved-league fact reads are Free. Full roster optimisation, roster-aware trades and NBA streaming require current Pro, including pasted or public Sleeper inputs. One website membership also covers MCP; MCP does not process payments."
       },
       "publication": {
-        "release_notes": "1.8.0 adds focused saved-league briefing and NBA streaming skills, clearer forecast-versus-actual and data-freshness checks, and Claude connector setup/troubleshooting. Adds the existing SmartDraftBoard logo to the Claude manifest. Same read-only MCP endpoint, scopes and Free/Pro access boundaries; no model or prediction-accuracy change."
+        "release_notes": "1.9.0 improves player discovery with source aliases, initials, team hints and labelled spelling suggestions. Adds structured correction and retry guidance, clearer Fantrax arguments, and shared Claude/ChatGPT workflow examples. Requires the matching MCP service deployment; read-only scopes and Free/Pro boundaries are unchanged."
       }
     }
   }

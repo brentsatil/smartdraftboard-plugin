@@ -27,6 +27,25 @@ claude --plugin-dir /absolute/path/to/smartdraftboard-plugin
 Claude reads `.claude-plugin/plugin.json` and `.mcp.json`. Portable plugin clients
 read `plugin.json` and `mcp.json`. Both load the skills under `skills/`.
 
+Use the [Claude setup guide](https://smartdraftboard.com/guides/claude-fantasy-plugin)
+or [ChatGPT setup guide](https://smartdraftboard.com/guides/chatgpt-fantasy-plugin),
+then try a [fantasy prompt for your sport](https://smartdraftboard.com/guides/fantasy-ai-prompts).
+For exact arguments and failure recovery, see [tool workflows](docs/tool-workflows.md).
+
+## Version 1.9 — better player discovery and recovery
+
+The matching MCP service supports source aliases, initials, team/position hints
+and small spelling errors in player search. Results distinguish spelling
+suggestions from exact identities, and sort by name relevance rather than player
+value. Known-player comparisons can go directly to `compare_players`.
+
+Tool failures carry an error code, a correction or retry action, and no decision
+data. Ambiguous names include candidate identities; unsupported scoring names
+include the accepted presets. Busy and temporary failures provide a retry delay.
+OAuth challenges and Free/Pro boundaries stay intact. The server must be deployed
+for these response fields to appear; updating this package alone does not update
+the hosted service. These improvements make no new prediction-accuracy claim.
+
 ## Version 1.8 — focused Claude workflows
 
 Three skills route player research, saved-league briefings and NBA streaming to
