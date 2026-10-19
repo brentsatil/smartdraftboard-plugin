@@ -1,7 +1,7 @@
 {
   "name": "smartdraftboard",
-  "version": "1.10.0",
-  "description": "Fantasy player research, saved-league briefings and NBA streaming with dated evidence. Optional account linking; advanced decisions require Pro.",
+  "version": "1.10.1",
+  "description": "Fantasy player research, saved-league briefings and NBA streaming with dated evidence. Optional account linking; analysis depends on access and evidence.",
   "author": {
     "name": "SmartDraftBoard",
     "url": "https://smartdraftboard.com"

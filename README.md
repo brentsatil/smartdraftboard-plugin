@@ -32,6 +32,19 @@ or [ChatGPT setup guide](https://smartdraftboard.com/guides/chatgpt-fantasy-plug
 then try a [fantasy prompt for your sport](https://smartdraftboard.com/guides/fantasy-ai-prompts).
 For exact arguments and failure recovery, see [tool workflows](docs/tool-workflows.md).
 
+## Version 1.10.1 — directory metadata correction
+
+The directory description and starter prompts explain available functions,
+account access and evidence limits without subscription offers. This package
+retains guided setup and the existing mixed public/OAuth connection settings.
+The accompanying MCP service update withholds weekly advice when required
+selected projection, availability or fixture evidence is unverifiable, expired
+or mismatched, including cached responses. Known original source dates and
+limits remain visible. Coverage depends on retained provider evidence; this
+release does not establish complete coverage for every sport or provider.
+Uploading the package does not deploy that service update. The hosted service
+and each directory review have separate release states.
+
 ## Version 1.10 — easier setup and first use
 
 Open [guided setup](https://smartdraftboard.com/assistant-plugin#start-here),
@@ -194,15 +207,23 @@ the task. Your assistant provider receives tool results under its own policies.
 
 ## Review and packaging
 
-Version 1.5.2 describes available functionality in the directory listing without
-subscription wording. Version 1.5.1 limits the OpenAI manifest to the required five positive and three
-negative review cases. `review-cases.json` retains the broader public regression
-cases, including Fantrax coverage, and linked-access cases. The linked
-walkthrough demonstrates the public integration in Claude, not OpenAI client
-certification.
-Public cases need no demo account. Protected cases require owner-controlled
-synthetic Free/Pro accounts after authorized deployment. Use a public sample
-league for Sleeper testing, or pasted names without any league connection.
+Version 1.10.1 corrects subscription wording that later releases reintroduced
+into the public directory description and starter prompts. The OpenAI manifest
+contains exactly five positive and three negative review cases.
+`review-cases.json` retains the broader public regression collection, including
+Fantrax coverage and linked-access cases. Entitlement requirements remain in the
+skills and factual review metadata.
+
+The current recording URL points to the legacy v1.0.0 public Claude walkthrough.
+It does not demonstrate current account linking, protected workflows or OpenAI
+client verification. A current reviewer walkthrough remains pending; replace
+that URL only after an accessible recording has been verified.
+
+Public player-research cases need no account. The pasted-roster review case
+requires a dedicated synthetic account with the applicable permissions. Use
+sample inputs and sample leagues, and keep reviewer credentials and private
+access instructions outside this package. Run the submitted cases in the
+intended clients before claiming client verification.
 
 Zip the contents of this directory, including hidden files, with `plugin.json`
 at the archive root. Do not include application source, credentials, logs or
