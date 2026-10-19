@@ -32,6 +32,19 @@ or [ChatGPT setup guide](https://smartdraftboard.com/guides/chatgpt-fantasy-plug
 then try a [fantasy prompt for your sport](https://smartdraftboard.com/guides/fantasy-ai-prompts).
 For exact arguments and failure recovery, see [tool workflows](docs/tool-workflows.md).
 
+## Version 1.10.2 — reviewer recording reference
+
+This metadata-only release points the review manifest to a v1.10.2 walkthrough
+asset. Its captured ChatGPT Work Free QA and direct reviewer OAuth/MCP protocol
+evidence are labelled as separate forms of verification. Reviewer-prepared Pro
+and synthetic-league flows and live OAuth PKCE were verified separately. The MCP
+tools/list response advertised 17 tools, and 8 selected direct MCP cases were
+executed. Those checks do not establish dedicated reviewer UI
+authentication or installation of the portable package. Verify that the release
+asset is accessible and matches these labels before submission. Tool contracts,
+authentication, read-only scopes and account entitlements are unchanged. No
+OpenAI directory approval is claimed.
+
 ## Version 1.10.1 — directory metadata correction
 
 The directory description and starter prompts explain available functions,
@@ -207,17 +220,18 @@ the task. Your assistant provider receives tool results under its own policies.
 
 ## Review and packaging
 
-Version 1.10.1 corrects subscription wording that later releases reintroduced
+Version 1.10.1 corrected subscription wording that later releases reintroduced
 into the public directory description and starter prompts. The OpenAI manifest
 contains exactly five positive and three negative review cases.
 `review-cases.json` retains the broader public regression collection, including
 Fantrax coverage and linked-access cases. Entitlement requirements remain in the
 skills and factual review metadata.
 
-The current recording URL points to the legacy v1.0.0 public Claude walkthrough.
-It does not demonstrate current account linking, protected workflows or OpenAI
-client verification. A current reviewer walkthrough remains pending; replace
-that URL only after an accessible recording has been verified.
+The v1.10.2 recording URL reserves a release asset for a reviewer walkthrough.
+The captured ChatGPT Work Free QA and direct reviewer OAuth/MCP protocol evidence
+must be labelled separately in the recording. Verify the uploaded asset and URL
+before using this package for review. Neither evidence set proves dedicated
+reviewer UI authentication or installation of this portable package.
 
 Public player-research cases need no account. The pasted-roster review case
 requires a dedicated synthetic account with the applicable permissions. Use
