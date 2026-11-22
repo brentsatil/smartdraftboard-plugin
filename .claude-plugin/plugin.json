@@ -1,7 +1,7 @@
 {
   "name": "smartdraftboard",
-  "version": "1.10.2",
-  "description": "Fantasy player research, saved-league briefings and NBA streaming with dated evidence. Optional account linking; analysis depends on access and evidence.",
+  "version": "1.10.3",
+  "description": "Fantasy football and fantasy basketball tools. Compare NFL and NBA players for free, check projections and trade values, or plan NBA streaming with Pro.",
   "author": {
     "name": "SmartDraftBoard",
     "url": "https://smartdraftboard.com"
@@ -16,9 +16,13 @@
   "supportUrl": "https://smartdraftboard.com/contact",
   "termsOfServiceUrl": "https://smartdraftboard.com/terms",
   "keywords": [
-    "fantasy-sports",
-    "rosters",
-    "projections"
+    "fantasy football",
+    "fantasy basketball",
+    "player projections",
+    "trade analysis",
+    "NBA streaming",
+    "FPL",
+    "SuperCoach"
   ],
   "icon": "./assets/logo.png",
   "license": "MIT"
