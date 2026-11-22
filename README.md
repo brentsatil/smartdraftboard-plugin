@@ -1,7 +1,9 @@
 # SmartDraftBoard
 
-Fantasy roster analysis, player comparisons and projections for NFL, NBA, FPL,
-AFL and NRL. Public player research and value-only trade comparisons need no
+Fantasy football and fantasy basketball tools. Compare NFL and NBA players for
+free, check projections and trade values, or plan NBA streaming with Pro.
+SmartDraftBoard also supports Fantasy Premier League (FPL), AFL and NRL.
+Public player research and value-only trade comparisons need no
 SmartDraftBoard account. Full roster analysis requires current Pro for personalised
 roster optimisation and trade lineup impact, including pasted rosters and public
 Sleeper inputs. Linked Free accounts retain saved-league fact reads.
